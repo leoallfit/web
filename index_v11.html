@@ -1,0 +1,1848 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="page-title">ALLFIT – Aumentá tu masa muscular en 90 días</title>
+  <meta id="page-desc" name="description" content="" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+/* ══ RESET ══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:#111827;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
+/* ══ CSS VARS ══ */
+:root{
+  --c-primary:#1F2937;--c-accent:#2563EB;--c-green:#10B981;--c-purple:#8B5CF6;
+  --c-bg-light:#F3F4F6;--c-bg-dark:#0F172A;--c-text-sec:#6B7280;
+}
+/* ══ UTILS ══ */
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 24px}
+.section-pad{padding:80px 0}
+.section-label{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c-accent);margin-bottom:14px}
+.section-title{font-size:clamp(28px,4vw,42px);font-weight:800;color:#111827;line-height:1.15;letter-spacing:-.5px;margin-bottom:16px}
+.section-sub{font-size:17px;color:var(--c-text-sec);max-width:560px;margin:0 auto 56px}
+/* ══ NAVBAR ══ */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:100;background:#1756b8;border-bottom:1px solid rgba(255,255,255,.1);transition:box-shadow .3s}
+.navbar.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.35)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:22px;font-weight:900;letter-spacing:-.5px;color:#fff}
+.nav-logo span{color:#60A5FA}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{font-size:14px;font-weight:500;color:rgba(255,255,255,.78);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:rgba(255,255,255,.15)!important;color:#fff!important;padding:10px 20px;border-radius:8px;font-size:13px!important;font-weight:700!important;border:1px solid rgba(255,255,255,.3)!important;transition:background .2s!important}
+.nav-cta:hover{background:rgba(255,255,255,.25)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s;display:block}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;flex-direction:column;background:#1756b8;border-top:1px solid rgba(255,255,255,.1);padding:16px 24px 24px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:15px;font-weight:500;color:rgba(255,255,255,.85);padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.mobile-menu .nav-cta{margin-top:12px;text-align:center;border-radius:8px;padding:14px 20px;font-size:14px!important}
+/* ══ HERO ══ */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;background:#1756b8}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center top;opacity:.35}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,23,42,.85) 0%,rgba(15,23,42,.55) 100%)}
+.hero-content{position:relative;z-index:2;padding:120px 0 80px;max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(37,99,235,.2);border:1px solid rgba(37,99,235,.4);color:#93C5FD;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:28px}
+.hero h1{font-size:clamp(36px,5vw,58px);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1px;margin-bottom:20px}
+.hero h1 em{font-style:normal;color:#60A5FA}
+.hero-sub{font-size:clamp(16px,2vw,19px);color:#CBD5E1;margin-bottom:40px;font-weight:400;line-height:1.7}
+.hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--c-accent);color:#fff;font-size:16px;font-weight:700;padding:18px 36px;border-radius:12px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s;box-shadow:0 4px 24px rgba(37,99,235,.5);letter-spacing:.03em}
+.hero-cta:hover{background:#1D4ED8;transform:translateY(-2px);box-shadow:0 8px 32px rgba(37,99,235,.6)}
+.hero-cta svg{width:18px;height:18px}
+.hero-stats{display:flex;gap:40px;margin-top:56px;flex-wrap:wrap}
+.hero-stat strong{display:block;font-size:28px;font-weight:800;color:#fff}
+.hero-stat span{font-size:13px;color:#94A3B8}
+/* ══ VALUE ══ */
+.value-section{background:#fff}
+.value-section .container{text-align:center}
+.value-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:820px;margin:0 auto}
+.value-item{display:flex;align-items:flex-start;gap:16px;background:#F8FAFF;border:1px solid #E5E7EB;border-radius:14px;padding:24px;text-align:left;transition:border-color .2s,box-shadow .2s}
+.value-item:hover{border-color:#BFDBFE;box-shadow:0 4px 16px rgba(37,99,235,.07)}
+.value-icon{width:44px;height:44px;border-radius:10px;background:#EFF6FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:20px}
+.value-item h3{font-size:15px;font-weight:700;color:#111827;margin-bottom:4px}
+.value-item p{font-size:13px;color:var(--c-text-sec);line-height:1.5}
+/* ══ PILLARS ══ */
+.pillars-section{background:var(--c-bg-light)}
+.pillars-section .container{text-align:center}
+.pillars-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pillar-card{background:#fff;border:1px solid #E5E7EB;border-radius:20px;padding:36px 28px;text-align:left;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.pillar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.pillar-card.blue::before{background:var(--c-accent)}
+.pillar-card.green::before{background:var(--c-green)}
+.pillar-card.purple::before{background:var(--c-purple)}
+.pillar-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.1)}
+.pillar-icon{width:60px;height:60px;border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:24px;font-size:28px}
+.pillar-icon.blue{background:#EFF6FF}.pillar-icon.green{background:#ECFDF5}.pillar-icon.purple{background:#F5F3FF}
+.pillar-img-wrap{width:100%;height:160px;border-radius:12px;overflow:hidden;margin-bottom:24px}
+.pillar-img{width:100%;height:100%;object-fit:cover;display:block}
+.pillar-number{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.pillar-number.blue{color:var(--c-accent)}.pillar-number.green{color:var(--c-green)}.pillar-number.purple{color:var(--c-purple)}
+.pillar-card h3{font-size:20px;font-weight:800;color:#111827;margin-bottom:12px}
+.pillar-card p{font-size:14px;color:var(--c-text-sec);line-height:1.7}
+/* ══ FORM ══ */
+.form-section{background:var(--c-bg-dark);position:relative;overflow:hidden}
+.form-section::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,.15) 0%,transparent 70%);pointer-events:none}
+.form-section::after{content:'';position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,.1) 0%,transparent 70%);pointer-events:none}
+.form-section .container{position:relative;z-index:1}
+.form-header{text-align:center;margin-bottom:48px}
+.form-header .section-label{color:#60A5FA}
+.form-header .section-title{color:#fff}
+.form-header .section-sub{color:#94A3B8}
+.form-card{background:#fff;border-radius:24px;padding:48px;max-width:720px;margin:0 auto;box-shadow:0 24px 80px rgba(0,0,0,.4)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column;gap:6px}
+.form-group.full{grid-column:1/-1}
+.form-group label{font-size:13px;font-weight:600;color:#374151}
+.form-group label span{color:#EF4444;margin-left:2px}
+.form-group input,.form-group select{height:46px;border:1.5px solid #E5E7EB;border-radius:10px;padding:0 14px;font-size:14px;font-family:inherit;color:#111827;background:#F9FAFB;transition:border-color .2s,box-shadow .2s;outline:none;appearance:none;-webkit-appearance:none}
+.form-group select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px}
+.form-group input:focus,.form-group select:focus{border-color:var(--c-accent);box-shadow:0 0 0 3px rgba(37,99,235,.1);background:#fff}
+.form-group input.error,.form-group select.error{border-color:#EF4444;box-shadow:0 0 0 3px rgba(239,68,68,.1)}
+.field-error{font-size:12px;color:#EF4444;display:none;align-items:center;gap:4px}
+.field-error.show{display:flex}
+.checkbox-group{grid-column:1/-1;display:flex;align-items:flex-start;gap:12px;padding:16px;background:#F8FAFF;border-radius:10px;border:1px solid #E5E7EB}
+.checkbox-group input[type="checkbox"]{width:18px;height:18px;flex-shrink:0;margin-top:2px;accent-color:var(--c-accent);cursor:pointer}
+.checkbox-group label{font-size:13px;color:var(--c-text-sec);cursor:pointer;line-height:1.5}
+.submit-btn{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:10px;background:var(--c-primary);color:#fff;font-size:15px;font-weight:700;letter-spacing:.04em;padding:18px 32px;border-radius:12px;border:none;cursor:pointer;transition:transform .2s,background .2s,box-shadow .2s;width:100%;font-family:inherit}
+.submit-btn:hover{background:var(--c-accent);transform:translateY(-1px);box-shadow:0 8px 24px rgba(37,99,235,.4)}
+.submit-btn svg{width:18px;height:18px}
+.form-note{grid-column:1/-1;text-align:center;font-size:12px;color:#9CA3AF;margin-top:-4px}
+.form-success{display:none;text-align:center;padding:48px 24px}
+.form-success.show{display:block}
+.success-icon{width:72px;height:72px;background:#ECFDF5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.success-icon svg{width:36px;height:36px}
+.form-success h3{font-size:26px;font-weight:800;color:#111827;margin-bottom:12px}
+.form-success p{font-size:15px;color:var(--c-text-sec);max-width:400px;margin:0 auto}
+/* ══ TESTIMONIALS MARQUEE ══ */
+.testimonials-section{background:#fff}
+.testimonials-section .container{text-align:center}
+.marquee-outer{overflow:hidden;position:relative;margin:0 -24px;padding:8px 0;cursor:grab}
+.marquee-outer:active{cursor:grabbing}
+.marquee-outer::before,.marquee-outer::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.marquee-outer::before{left:0;background:linear-gradient(to right,#fff,transparent)}
+.marquee-outer::after{right:0;background:linear-gradient(to left,#fff,transparent)}
+.testimonials-grid{display:flex;gap:20px;width:max-content;will-change:transform}
+.testimonial-card{background:#F8FAFF;border:1px solid #E5E7EB;border-radius:20px;padding:28px;text-align:left;width:340px;flex-shrink:0;transition:box-shadow .2s,transform .2s}
+.testimonial-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-3px)}
+.marquee-nav{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:28px}
+.carousel-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid #E5E7EB;background:#fff;color:#374151;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,border-color .2s,color .2s;flex-shrink:0}
+.carousel-btn:hover{background:var(--c-accent);border-color:var(--c-accent);color:#fff}
+.marquee-hint{font-size:12px;color:#94A3B8;font-weight:500}
+@media(max-width:768px){
+  .testimonial-card{width:280px}
+  .marquee-outer::before,.marquee-outer::after{width:40px}
+}
+.testimonial-stars{color:#F59E0B;font-size:15px;margin-bottom:16px}
+.testimonial-text{font-size:14px;color:#374151;line-height:1.7;margin-bottom:20px;font-style:italic}
+.testimonial-author{display:flex;align-items:center;gap:12px}
+.author-avatar{width:48px;height:48px;border-radius:50%;background:#E5E7EB;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;overflow:hidden}
+.author-avatar img{width:100%;height:100%;object-fit:cover}
+.author-info strong{display:block;font-size:14px;font-weight:700;color:#111827}
+.author-info span{font-size:12px;color:var(--c-accent);font-weight:600}
+/* before/after */
+.before-after{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.ba-photo{flex:1;position:relative;border-radius:10px;overflow:hidden;aspect-ratio:3/4;background:#F1F5F9;border:1.5px solid #E5E7EB}
+.ba-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.ba-label{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:100px;backdrop-filter:blur(4px)}
+.ba-label.antes{background:rgba(239,68,68,.85);color:#fff}
+.ba-label.despues{background:rgba(16,185,129,.85);color:#fff}
+.ba-arrow{font-size:20px;color:#CBD5E1;flex-shrink:0;font-weight:700}
+/* ══ CTA BANNER ══ */
+.cta-banner{background:linear-gradient(135deg,#1E40AF 0%,var(--c-accent) 100%);padding:80px 0;text-align:center}
+.cta-banner h2{font-size:clamp(28px,4vw,44px);font-weight:900;color:#fff;margin-bottom:16px;letter-spacing:-.5px}
+.cta-banner p{font-size:17px;color:#BFDBFE;margin-bottom:36px}
+.btn-white{display:inline-flex;align-items:center;gap:10px;background:#fff;color:#1E40AF;font-size:15px;font-weight:700;padding:18px 36px;border-radius:12px;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 24px rgba(0,0,0,.2);font-family:inherit}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,.25)}
+/* ══ FOOTER ══ */
+.footer{background:var(--c-bg-dark);padding:56px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:48px}
+.footer-logo{font-size:24px;font-weight:900;color:#fff;margin-bottom:14px}
+.footer-logo span{color:var(--c-accent)}
+.footer-tagline{font-size:13px;color:#64748B;line-height:1.7;max-width:260px}
+.social-links{display:flex;gap:12px;margin-top:20px}
+.social-link{width:38px;height:38px;border-radius:10px;background:#1E293B;border:1px solid #334155;display:flex;align-items:center;justify-content:center;color:#94A3B8;transition:background .2s,color .2s}
+.social-link:hover{background:var(--c-accent);color:#fff;border-color:var(--c-accent)}
+.social-link svg{width:16px;height:16px}
+.footer-col h4{font-size:13px;font-weight:700;color:#F1F5F9;margin-bottom:16px;letter-spacing:.05em;text-transform:uppercase}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col ul a{font-size:13px;color:#64748B;transition:color .2s}
+.footer-col ul a:hover{color:#94A3B8}
+.footer-bottom{border-top:1px solid #1E293B;padding-top:28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p,.footer-bottom a{font-size:12px;color:#475569}
+.footer-bottom a:hover{color:#94A3B8}
+/* ══ SCROLL TOP ══ */
+.scroll-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--c-accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:50;box-shadow:0 4px 16px rgba(37,99,235,.4)}
+.scroll-top.visible{opacity:1;pointer-events:auto}
+.scroll-top:hover{transform:translateY(-2px)}
+.scroll-top svg{width:18px;height:18px}
+/* ══ ANIMATIONS ══ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.animate{opacity:0}
+.animate.in{animation:fadeUp .5s ease forwards}
+/* ══ RESPONSIVE ══ */
+@media(max-width:768px){
+  .section-pad{padding:56px 0}
+  .nav-links{display:none}.hamburger{display:flex}
+  .value-grid,.pillars-grid,.testimonials-grid{grid-template-columns:1fr}
+  .form-grid{grid-template-columns:1fr}
+  .form-group.full,.checkbox-group,.submit-btn,.form-note{grid-column:1}
+  .form-card{padding:28px 20px}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .hero-stats{gap:24px}
+}
+@media(max-width:480px){.hero h1{font-size:30px}.hero-cta{padding:15px 24px;font-size:14px}}
+
+/* ═══════════════════════════════════
+   ADMIN PANEL v2
+═══════════════════════════════════ */
+#adm-overlay{position:fixed;inset:0;z-index:99999;display:none;align-items:center;justify-content:center;background:rgba(5,10,20,.88);backdrop-filter:blur(8px)}
+#adm-overlay.open{display:flex}
+#adm-shell{width:calc(100vw - 20px);height:calc(100vh - 20px);max-width:1280px;max-height:860px;border-radius:20px;overflow:hidden;box-shadow:0 48px 120px rgba(0,0,0,.75);display:flex;flex-direction:column;animation:admIn .22s cubic-bezier(.16,1,.3,1)}
+@keyframes admIn{from{transform:scale(.96) translateY(16px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+#adm-shell *{box-sizing:border-box}
+/* ── LOGIN ── */
+#adm-login{display:flex;height:100%}
+.adm-login-left{flex:1;background:linear-gradient(145deg,#060D1F 0%,#0F2952 60%,#1a3a6e 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px;position:relative;overflow:hidden}
+.adm-login-left::before{content:'';position:absolute;top:-120px;right:-120px;width:420px;height:420px;background:radial-gradient(circle,rgba(37,99,235,.3) 0%,transparent 65%);pointer-events:none}
+.adm-login-left::after{content:'';position:absolute;bottom:-100px;left:-80px;width:320px;height:320px;background:radial-gradient(circle,rgba(139,92,246,.18) 0%,transparent 65%);pointer-events:none}
+.adm-l-brand{text-align:center;position:relative;z-index:1}
+.adm-l-logo{font-size:48px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1;margin-bottom:14px}
+.adm-l-logo span{color:#60A5FA}
+.adm-l-tag{font-size:14px;color:#94A3B8;line-height:1.7;max-width:220px;margin:0 auto 36px}
+.adm-l-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.adm-l-pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:#CBD5E1;font-size:11px;font-weight:600;padding:5px 12px;border-radius:100px}
+.adm-login-right{width:400px;background:#fff;display:flex;align-items:center;justify-content:center;padding:48px;flex-shrink:0}
+.adm-login-form{width:100%}
+.adm-login-form h2{font-size:26px;font-weight:800;color:#0F172A;margin-bottom:6px;letter-spacing:-.5px}
+.adm-login-form p{font-size:13px;color:#64748B;margin-bottom:30px;line-height:1.5}
+#adm-login-err{background:#FEF2F2;color:#DC2626;border:1px solid #FECACA;border-radius:8px;padding:10px 14px;font-size:13px;margin-bottom:14px;display:none}
+.adm-inp-wrap{position:relative;margin-bottom:14px}
+.adm-inp-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;pointer-events:none}
+.adm-inp-wrap input{width:100%;border:1.5px solid #E2E8F0;border-radius:10px;padding:13px 14px 13px 40px;font-size:14px;outline:none;font-family:inherit;color:#0F172A;background:#F8FAFC;transition:border-color .2s,box-shadow .2s}
+.adm-inp-wrap input:focus{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.1);background:#fff}
+#adm-login-btn{width:100%;background:#2563EB;color:#fff;border:none;border-radius:10px;padding:14px;font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s,transform .1s;letter-spacing:.02em;margin-top:4px}
+#adm-login-btn:hover{background:#1D4ED8;transform:translateY(-1px)}
+/* ── APP LAYOUT ── */
+#adm-app{display:flex;height:100%}
+#adm-sidebar{width:228px;background:#0A1628;display:flex;flex-direction:column;flex-shrink:0}
+#adm-sb-header{padding:20px 18px 14px;border-bottom:1px solid rgba(255,255,255,.06)}
+#adm-sb-logo{font-size:21px;font-weight:900;color:#fff;letter-spacing:-.5px}
+#adm-sb-logo span{color:#60A5FA}
+#adm-sb-sub{font-size:10px;color:#475569;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-top:2px}
+#adm-nav{flex:1;padding:10px 10px;display:flex;flex-direction:column;gap:2px;overflow-y:auto}
+.adm-nav-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:9px;border:none;background:none;color:#64748B;font-size:13px;font-weight:500;width:100%;text-align:left;cursor:pointer;font-family:inherit;transition:all .15s}
+.adm-nav-item .n-ic{width:22px;text-align:center;font-size:15px;flex-shrink:0}
+.adm-nav-item:hover{background:rgba(255,255,255,.07);color:#CBD5E1}
+.adm-nav-item.active{background:#1D4ED8;color:#fff;font-weight:600}
+.adm-nav-sep{height:1px;background:rgba(255,255,255,.06);margin:6px 10px}
+#adm-sb-footer{padding:12px 10px;border-top:1px solid rgba(255,255,255,.06)}
+#adm-logout{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:8px;border:none;background:none;color:#475569;font-size:12px;font-weight:500;cursor:pointer;font-family:inherit;transition:all .15s;width:100%;text-align:left}
+#adm-logout:hover{background:rgba(239,68,68,.1);color:#F87171}
+/* ── MAIN ── */
+#adm-main{flex:1;display:flex;flex-direction:column;background:#F1F5F9;min-width:0;overflow:hidden}
+#adm-header{display:flex;align-items:center;gap:12px;padding:0 24px;height:62px;background:#fff;border-bottom:1px solid #E8EDF3;flex-shrink:0;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+#adm-sec-title{font-size:16px;font-weight:700;color:#0F172A;flex:1;letter-spacing:-.3px}
+#adm-header-save{display:flex;align-items:center;gap:7px;background:#2563EB;color:#fff;border:none;border-radius:9px;padding:9px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s,transform .1s;letter-spacing:.02em}
+#adm-header-save:hover{background:#1D4ED8;transform:translateY(-1px)}
+#adm-close{width:34px;height:34px;border-radius:9px;background:#F1F5F9;border:none;color:#64748B;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;flex-shrink:0}
+#adm-close:hover{background:#FEE2E2;color:#DC2626}
+#adm-toast{position:fixed;bottom:24px;right:28px;z-index:100000;padding:12px 22px;border-radius:12px;font-size:13px;font-weight:600;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;pointer-events:none;background:#0F172A;color:#fff;box-shadow:0 8px 28px rgba(0,0,0,.35)}
+#adm-toast.show{opacity:1;transform:translateY(0)}
+#adm-toast.err{background:#DC2626}
+#adm-toast.ok{background:#059669}
+#adm-toast.warn{background:#D97706}
+/* ── SCROLL AREA ── */
+#adm-content{flex:1;overflow-y:scroll;overflow-x:hidden;padding:22px 20px 32px;scrollbar-width:thin;scrollbar-color:#CBD5E1 #F1F5F9}
+#adm-content::-webkit-scrollbar{width:8px}
+#adm-content::-webkit-scrollbar-track{background:#F1F5F9}
+#adm-content::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:4px}
+#adm-content::-webkit-scrollbar-thumb:hover{background:#94A3B8}
+.adm-sec{display:none}
+.adm-sec.active{display:block}
+/* ── CARDS ── */
+.adm-card{background:#fff;border:1px solid #E8EDF3;border-radius:14px;padding:20px 22px;margin-bottom:14px;box-shadow:0 1px 3px rgba(0,0,0,.03)}
+.adm-card-ttl{font-size:11px;font-weight:700;color:#94A3B8;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.adm-card-ttl::before{content:'';display:block;width:3px;height:13px;background:#2563EB;border-radius:2px;flex-shrink:0}
+/* ── FIELDS ── */
+.adm-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.adm-f{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.adm-f:last-child{margin-bottom:0}
+.adm-f>label{font-size:11px;font-weight:700;color:#374151;text-transform:uppercase;letter-spacing:.06em}
+.adm-f input,.adm-f select,.adm-f textarea{border:1.5px solid #E8EDF3;border-radius:8px;padding:9px 12px;font-size:13px;color:#0F172A;background:#F8FAFC;outline:none;font-family:inherit;transition:border-color .2s,box-shadow .2s;width:100%}
+.adm-f select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:30px;appearance:none;-webkit-appearance:none}
+.adm-f input:focus,.adm-f select:focus,.adm-f textarea:focus{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.08);background:#fff}
+.adm-f textarea{resize:vertical;min-height:76px}
+.adm-hint{font-size:11px;color:#94A3B8;margin-top:2px}
+/* ── ITEM CARDS ── */
+.adm-item-card{background:#F8FAFC;border:1.5px solid #E8EDF3;border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.adm-item-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.adm-item-num{font-size:10px;font-weight:800;color:#94A3B8;text-transform:uppercase;letter-spacing:.08em;background:#E8EDF3;padding:3px 10px;border-radius:100px}
+.adm-del-btn{background:none;color:#94A3B8;border:1px solid #E8EDF3;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:600;transition:all .15s}
+.adm-del-btn:hover{background:#FEF2F2;color:#DC2626;border-color:#FECACA}
+.adm-add-btn{display:flex;align-items:center;justify-content:center;gap:7px;background:#EFF6FF;color:#2563EB;border:1.5px dashed #BFDBFE;border-radius:9px;padding:11px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit;width:100%;transition:all .15s;margin-top:6px}
+.adm-add-btn:hover{background:#DBEAFE;border-color:#93C5FD}
+/* ── COLOR PICKERS ── */
+.adm-color-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.adm-color-card{background:#fff;border:1px solid #E8EDF3;border-radius:10px;padding:13px}
+.adm-color-card label{font-size:11px;font-weight:700;color:#374151;display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em}
+.adm-color-row{display:flex;align-items:center;gap:8px}
+.adm-color-row input[type="color"]{width:38px;height:38px;border-radius:8px;border:1.5px solid #E8EDF3;padding:3px;cursor:pointer;background:none;flex-shrink:0}
+.adm-color-row input[type="text"]{flex:1;border:1.5px solid #E8EDF3;border-radius:7px;padding:8px 9px;font-size:12px;font-family:monospace;text-transform:uppercase;outline:none;color:#0F172A;min-width:0}
+.adm-color-row input[type="text"]:focus{border-color:#2563EB}
+/* ── SYNC ── */
+.sync-box{border-radius:10px;padding:12px 16px;font-size:13px;margin-top:12px;display:none;line-height:1.5}
+.sync-box.ok{background:#F0FDF4;color:#166534;border:1px solid #BBF7D0;display:block}
+.sync-box.err{background:#FEF2F2;color:#DC2626;border:1px solid #FECACA;display:block}
+/* ── HOTSPOT ── */
+#adm-hotspot{position:fixed;bottom:0;left:0;width:40px;height:40px;z-index:99998;opacity:0;cursor:default}
+</style>
+</head>
+<body>
+
+<!-- ══ ADMIN v2 ══ -->
+<div id="adm-overlay">
+ <div id="adm-shell">
+
+  <!-- LOGIN -->
+  <div id="adm-login">
+   <div class="adm-login-left">
+    <div class="adm-l-brand">
+     <div class="adm-l-logo">ALL<span>FIT</span></div>
+     <p class="adm-l-tag">Panel de administración de tu landing page</p>
+     <div class="adm-l-pills">
+      <span class="adm-l-pill">Hero</span><span class="adm-l-pill">Testimonios</span>
+      <span class="adm-l-pill">Colores</span><span class="adm-l-pill">Sync ☁️</span>
+     </div>
+    </div>
+   </div>
+   <div class="adm-login-right">
+    <div class="adm-login-form">
+     <h2>Bienvenido</h2>
+     <p>Ingresá tu contraseña para administrar el sitio</p>
+     <div id="adm-login-err">Contraseña incorrecta. Intentá de nuevo.</div>
+     <div class="adm-inp-wrap">
+      <span class="adm-inp-icon">🔒</span>
+      <input type="password" id="adm-pass" placeholder="Contraseña" autocomplete="current-password"/>
+     </div>
+     <button id="adm-login-btn">Ingresar al panel →</button>
+    </div>
+   </div>
+  </div>
+
+  <!-- APP -->
+  <div id="adm-app" style="display:none">
+   <!-- SIDEBAR -->
+   <aside id="adm-sidebar">
+    <div id="adm-sb-header">
+     <div id="adm-sb-logo">ALL<span>FIT</span></div>
+     <div id="adm-sb-sub">Admin Panel</div>
+    </div>
+    <nav id="adm-nav">
+     <button class="adm-nav-item active" data-sec="hero"><span class="n-ic">🖼️</span>Hero</button>
+     <button class="adm-nav-item" data-sec="valor"><span class="n-ic">✨</span>Beneficios</button>
+     <button class="adm-nav-item" data-sec="pilares"><span class="n-ic">🏋️</span>Pilares</button>
+     <button class="adm-nav-item" data-sec="testimonios"><span class="n-ic">⭐</span>Testimonios</button>
+     <div class="adm-nav-sep"></div>
+     <button class="adm-nav-item" data-sec="colores"><span class="n-ic">🎨</span>Colores</button>
+     <button class="adm-nav-item" data-sec="redes"><span class="n-ic">🔗</span>Redes sociales</button>
+     <button class="adm-nav-item" data-sec="formulario"><span class="n-ic">📋</span>Formulario</button>
+     <button class="adm-nav-item" data-sec="cta"><span class="n-ic">🚀</span>CTA & Footer</button>
+     <div class="adm-nav-sep"></div>
+     <button class="adm-nav-item" data-sec="sync"><span class="n-ic">☁️</span>Sincronización</button>
+    </nav>
+    <div id="adm-sb-footer">
+     <button id="adm-logout">🚪 Cerrar sesión</button>
+    </div>
+   </aside>
+
+   <!-- MAIN -->
+   <div id="adm-main">
+    <header id="adm-header">
+     <span id="adm-sec-title">Hero</span>
+     <button id="adm-header-save">💾 Guardar cambios</button>
+     <button id="adm-close">✕</button>
+    </header>
+    <div id="adm-toast"></div>
+
+    <div id="adm-content">
+
+     <!-- HERO -->
+     <div class="adm-sec active" id="sec-hero">
+      <div class="adm-card">
+       <div class="adm-card-ttl">Texto principal</div>
+       <div class="adm-f"><label>Badge (etiqueta superior)</label><input id="c-hero-badge"/></div>
+       <div class="adm-f"><label>Titular — usá &lt;em&gt;texto&lt;/em&gt; para resaltar en azul</label><input id="c-hero-headline"/></div>
+       <div class="adm-f"><label>Subtítulo</label><textarea id="c-hero-sub"></textarea></div>
+       <div class="adm-f"><label>Texto del botón</label><input id="c-hero-cta"/></div>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Imagen de fondo</div>
+       <div class="adm-f"><label>URL de la imagen (recomendado: 1920×1080px)</label><input id="c-hero-img" placeholder="https://..."/><span class="adm-hint">Dejá vacío para usar el fondo de color sólido</span></div>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Estadísticas</div>
+       <div class="adm-row">
+        <div class="adm-f"><label>Número 1</label><input id="c-stat1-val"/></div>
+        <div class="adm-f"><label>Descripción 1</label><input id="c-stat1-lbl"/></div>
+        <div class="adm-f"><label>Número 2</label><input id="c-stat2-val"/></div>
+        <div class="adm-f"><label>Descripción 2</label><input id="c-stat2-lbl"/></div>
+        <div class="adm-f"><label>Número 3</label><input id="c-stat3-val"/></div>
+        <div class="adm-f"><label>Descripción 3</label><input id="c-stat3-lbl"/></div>
+       </div>
+      </div>
+     </div>
+
+     <!-- BENEFICIOS -->
+     <div class="adm-sec" id="sec-valor">
+      <div class="adm-card">
+       <div class="adm-card-ttl">Encabezado de sección</div>
+       <div class="adm-row">
+        <div class="adm-f"><label>Título</label><input id="c-val-title"/></div>
+        <div class="adm-f"><label>Subtítulo</label><input id="c-val-sub"/></div>
+       </div>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Ítems</div>
+       <div id="c-val-items"></div>
+       <button id="add-val-item" class="adm-add-btn">＋ Agregar ítem</button>
+      </div>
+     </div>
+
+     <!-- PILARES -->
+     <div class="adm-sec" id="sec-pilares">
+      <div class="adm-card">
+       <div class="adm-card-ttl">Encabezado de sección</div>
+       <div class="adm-row">
+        <div class="adm-f"><label>Título</label><input id="c-pil-title"/></div>
+        <div class="adm-f"><label>Subtítulo</label><input id="c-pil-sub"/></div>
+       </div>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Pilares</div>
+       <div id="c-pil-items"></div>
+       <button id="add-pil-item" class="adm-add-btn">＋ Agregar pilar</button>
+      </div>
+     </div>
+
+     <!-- TESTIMONIOS -->
+     <div class="adm-sec" id="sec-testimonios">
+      <div id="testi-items"></div>
+      <button id="add-testi" class="adm-add-btn">＋ Agregar testimonio</button>
+     </div>
+
+     <!-- COLORES -->
+     <div class="adm-sec" id="sec-colores">
+      <div class="adm-card">
+       <div class="adm-card-ttl">Paleta de colores</div>
+       <div class="adm-color-grid" id="color-grid"></div>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Vista previa</div>
+       <div id="color-preview" style="display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-radius:10px;margin-bottom:10px">
+        <span style="font-size:20px;font-weight:900;color:#fff" id="prev-logo">ALLFIT</span>
+        <button id="prev-btn" style="padding:9px 18px;border-radius:8px;border:none;color:#fff;font-size:13px;font-weight:700;cursor:default">EMPEZAR</button>
+       </div>
+       <div style="display:flex;gap:8px">
+        <span id="prev-blue"  style="flex:1;padding:8px;text-align:center;border-radius:8px;font-size:12px;font-weight:700;color:#fff">Entrenamiento</span>
+        <span id="prev-green" style="flex:1;padding:8px;text-align:center;border-radius:8px;font-size:12px;font-weight:700;color:#fff">Nutrición</span>
+        <span id="prev-purp"  style="flex:1;padding:8px;text-align:center;border-radius:8px;font-size:12px;font-weight:700;color:#fff">Comunidad</span>
+       </div>
+      </div>
+     </div>
+
+     <!-- REDES -->
+     <div class="adm-sec" id="sec-redes">
+      <div class="adm-card">
+       <div class="adm-card-ttl">Redes sociales</div>
+       <div class="adm-row">
+        <div class="adm-f"><label>Instagram</label><input id="r-ig" placeholder="https://instagram.com/..."/></div>
+        <div class="adm-f"><label>YouTube</label><input id="r-yt" placeholder="https://youtube.com/..."/></div>
+        <div class="adm-f"><label>LinkedIn</label><input id="r-li" placeholder="https://linkedin.com/..."/></div>
+        <div class="adm-f"><label>WhatsApp (ej: 5491112345678)</label><input id="r-wa"/></div>
+       </div>
+       <div class="adm-f"><label>Email de contacto</label><input id="r-email" type="email"/></div>
+      </div>
+     </div>
+
+     <!-- FORMULARIO -->
+     <div class="adm-sec" id="sec-formulario">
+      <div class="adm-card">
+       <div class="adm-card-ttl">Textos del formulario</div>
+       <div class="adm-row">
+        <div class="adm-f"><label>Título</label><input id="f-title"/></div>
+        <div class="adm-f"><label>Subtítulo</label><input id="f-sub"/></div>
+        <div class="adm-f"><label>Texto del botón enviar</label><input id="f-btn"/></div>
+        <div class="adm-f"><label>Título mensaje éxito</label><input id="f-ok-title"/></div>
+       </div>
+       <div class="adm-f"><label>Mensaje éxito (texto completo)</label><textarea id="f-ok-msg"></textarea></div>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Preguntas del formulario</div>
+       <p style="font-size:12px;color:#64748B;margin-bottom:14px;line-height:1.6">Agregá, eliminá o reordenás las preguntas. Tipo <strong>select</strong>: escribí las opciones separadas por <code style="background:#F1F5F9;padding:1px 5px;border-radius:3px">|</code> (ej: <em>Opción 1|Opción 2|Opción 3</em>)</p>
+       <div id="f-fields-list"></div>
+       <button id="add-form-field" class="adm-add-btn">＋ Agregar pregunta</button>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Integración Formspree</div>
+       <div class="adm-f"><label>ID del formulario Formspree</label><input id="f-formspree" placeholder="xkgwlrpz"/><span class="adm-hint">Creá cuenta gratis en formspree.io → Create Form → copiá el ID. Los datos llegarán a tu email.</span></div>
+      </div>
+     </div>
+
+     <!-- CTA & FOOTER -->
+     <div class="adm-sec" id="sec-cta">
+      <div class="adm-card">
+       <div class="adm-card-ttl">Banner CTA</div>
+       <div class="adm-row">
+        <div class="adm-f"><label>Título</label><input id="c-cta-title"/></div>
+        <div class="adm-f"><label>Subtítulo</label><input id="c-cta-sub"/></div>
+       </div>
+       <div class="adm-f"><label>Texto del botón</label><input id="c-cta-btn"/></div>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Footer</div>
+       <div class="adm-row">
+        <div class="adm-f"><label>Tagline</label><input id="c-foot-tag"/></div>
+        <div class="adm-f"><label>Texto copyright</label><input id="c-foot-copy"/></div>
+       </div>
+      </div>
+     </div>
+
+     <!-- SINCRONIZACIÓN -->
+     <div class="adm-sec" id="sec-sync">
+      <div class="adm-card">
+       <div class="adm-card-ttl">Sincronización en la nube</div>
+       <p style="font-size:13px;color:#374151;margin-bottom:14px;line-height:1.6">Configurá tu token de GitHub <strong>una sola vez</strong> y los cambios que guardes aparecerán <strong>automáticamente en todos los visitantes</strong> del sitio.</p>
+       <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:10px;padding:14px;margin-bottom:16px;font-size:12px;color:#1E40AF;line-height:2">
+        <strong>Solo la primera vez:</strong><br>
+        1. GitHub → tu foto → <strong>Settings</strong><br>
+        2. Menú izquierdo → <strong>Developer settings</strong><br>
+        3. <strong>Personal access tokens → Tokens (classic)</strong><br>
+        4. <strong>Generate new token (classic)</strong> → nombre: allfit → tildá <strong>repo</strong> → Generate<br>
+        5. Copiá el token (<code style="background:#DBEAFE;padding:1px 5px;border-radius:3px">ghp_xxx...</code>) y pegalo abajo
+       </div>
+       <div class="adm-f"><label>GitHub Personal Access Token</label><input id="sync-gh-token" type="password" placeholder="ghp_xxxxxxxxxxxxxxxx"/></div>
+       <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+        <button id="sync-push" style="background:#2563EB;color:#fff;border:none;border-radius:9px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s">☁️ Publicar cambios</button>
+        <button id="sync-pull" style="background:#8B5CF6;color:#fff;border:none;border-radius:9px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s">⬇️ Descargar config</button>
+       </div>
+       <div id="sync-status" class="sync-box"></div>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Estado de conexión</div>
+       <p id="sync-info" style="font-size:13px;color:#64748B">No configurado.</p>
+      </div>
+      <div class="adm-card">
+       <div class="adm-card-ttl">Cambiar contraseña de acceso</div>
+       <p style="font-size:13px;color:#374151;margin-bottom:14px;line-height:1.6">La nueva contraseña se sincroniza con GitHub para que todos los admins la compartan automáticamente.</p>
+       <div class="adm-f"><label>Contraseña actual</label><input type="password" id="pass-cur" placeholder="Contraseña actual"/></div>
+       <div class="adm-f"><label>Nueva contraseña</label><input type="password" id="pass-new" placeholder="Mínimo 6 caracteres"/></div>
+       <div class="adm-f"><label>Confirmar nueva contraseña</label><input type="password" id="pass-conf" placeholder="Repetí la contraseña"/></div>
+       <div id="pass-msg" style="display:none;border-radius:8px;padding:10px 14px;font-size:13px;margin:10px 0"></div>
+       <button id="pass-change-btn" style="background:#0F172A;color:#fff;border:none;border-radius:9px;padding:10px 20px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;transition:background .2s">🔑 Cambiar contraseña</button>
+      </div>
+     </div>
+
+    </div><!-- /adm-content -->
+   </div><!-- /adm-main -->
+  </div><!-- /adm-app -->
+
+ </div><!-- /adm-shell -->
+</div><!-- /adm-overlay -->
+
+<div id="adm-hotspot"></div>
+
+<!-- ══ LANDING PAGE ══ -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">ALL<span>FIT</span></a>
+    <div class="nav-links">
+      <a href="#valor">Beneficios</a>
+      <a href="#pilares">Programa</a>
+      <a href="#testimonios">Resultados</a>
+      <a href="#formulario" class="nav-cta">Empezar ahora</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#valor">Beneficios</a><a href="#pilares">Programa</a>
+    <a href="#testimonios">Resultados</a>
+    <a href="#formulario" class="nav-cta">Empezar ahora</a>
+  </div>
+</nav>
+
+<section class="hero" id="inicio">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge" id="hero-badge"></div>
+      <h1 id="hero-h1"></h1>
+      <p class="hero-sub" id="hero-sub"></p>
+      <a href="#formulario" class="hero-cta" id="hero-cta-btn">
+        <span id="hero-cta-text"></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <div class="hero-stats" id="hero-stats"></div>
+    </div>
+  </div>
+</section>
+
+<section class="value-section section-pad" id="valor">
+  <div class="container" id="value-container"></div>
+</section>
+
+<section class="testimonials-section section-pad" id="testimonios">
+  <div class="container">
+    <span class="section-label animate">Resultados reales</span>
+    <h2 class="section-title animate">Lo que dicen nuestros miembros</h2>
+    <p class="section-sub animate">Más de 5,000 hombres ya transformaron su cuerpo con ALLFIT.</p>
+    <div class="marquee-outer" id="marquee-outer">
+      <div class="testimonials-grid" id="testi-grid"></div>
+    </div>
+    <div class="marquee-nav">
+      <button class="carousel-btn" id="carousel-prev" aria-label="Más lento / izquierda">&#8592;</button>
+      <span class="marquee-hint">Pausá con el mouse · arrastrá para navegar</span>
+      <button class="carousel-btn" id="carousel-next" aria-label="Más rápido / derecha">&#8594;</button>
+    </div>
+  </div>
+</section>
+
+<section class="form-section section-pad" id="formulario">
+  <div class="container">
+    <div class="form-header">
+      <span class="section-label">Empezá hoy</span>
+      <h2 class="section-title" id="form-title">Comenzá tu transformación hoy</h2>
+      <p class="section-sub" id="form-sub">Completá el formulario y recibirás tu plan personalizado en menos de 24 horas.</p>
+    </div>
+    <div class="form-card">
+      <form id="leadForm" novalidate>
+        <div class="form-grid" id="form-fields-container"></div>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <h3 id="form-ok-title">¡Gracias por registrarte!</h3>
+        <p id="form-ok-msg">En menos de 24 horas recibirás tu plan personalizado. ¡Bienvenido a ALLFIT! 💪</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pillars-section section-pad" id="pilares">
+  <div class="container" id="pillars-container"></div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2 id="cta-title">¿Listo para transformarte?</h2>
+    <p id="cta-sub">Más de 5,000 hombres ya dieron el primer paso. Es tu turno.</p>
+    <button class="btn-white" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+      <span id="cta-btn-text">COMPLETÁ EL FORMULARIO AHORA</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">ALL<span>FIT</span></div>
+        <p class="footer-tagline" id="foot-tagline">Entrenamiento online para hombres que quieren aumentar su masa muscular de forma inteligente.</p>
+        <div class="social-links" id="social-links"></div>
+      </div>
+      <div class="footer-col"><h4>Programa</h4><ul><li><a href="#pilares">Entrenamientos</a></li><li><a href="#pilares">Nutrición</a></li><li><a href="#pilares">Comunidad</a></li><li><a href="#formulario">Empezar</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li><li><a href="#" id="foot-email-link">Contacto</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p id="foot-copy">© 2026 ALLFIT. Todos los derechos reservados.</p></div>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
+<script>
+/* ══════════════════════════════════════════
+   DEFAULT CONFIG
+══════════════════════════════════════════ */
+const DEFAULT = {
+  colors:{ primary:'#1F2937', accent:'#2563EB', green:'#10B981', purple:'#8B5CF6', bgLight:'#F3F4F6', bgDark:'#0F172A', textSec:'#6B7280' },
+  hero:{
+    badge:'Leo Massud · Entrenador especializado en hipertrofia',
+    headline:'Entrenás hace años.<br>Tu cuerpo no cambia.<br><em>Eso termina hoy.</em>',
+    sub:'Soy Leo, entrenador especializado en hipertrofia para hombres mayores de 25. Diseño tu plan, te acompaño semana a semana y trabajo con vos hasta que veas resultados reales.',
+    cta:'QUIERO MI PLAN CON LEO',
+    bgImage:'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=1600&q=80',
+    stats:[{v:'5,000+',l:'Hombres transformados'},{v:'90 días',l:'Para ver resultados reales'},{v:'100%',l:'Personalizado para vos'}]
+  },
+  value:{
+    title:'No soy una app. Soy Leo.', sub:'Trabajo con vos directamente. Cada plan lo armo yo, cada semana lo reviso yo.',
+    items:[
+      {icon:'🎯',title:'Tu plan, diseñado por mí desde cero',desc:'Evaluamos tu punto de partida juntos. Sin plantillas genéricas: cada rutina y cada dieta las construyo para vos.'},
+      {icon:'📈',title:'Te sigo semana a semana, sin excusas',desc:'Revisamos tus métricas cada semana y ajusto lo que haga falta. No sos un número, sos mi cliente.'},
+      {icon:'👥',title:'Comunidad de hombres que van en serio',desc:'Más de 5,000 tipos con los mismos objetivos que vos. La motivación que no encontrás solo, la encontrás acá.'},
+      {icon:'💬',title:'Acceso directo a mí en todo momento',desc:'Me escribís y yo respondo. Sin bots, sin asistentes. Cuando tenés una duda, la resolvemos juntos.'}
+    ]
+  },
+  pillars:{
+    title:'El método que uso con cada cliente', sub:'Tres piezas que funcionan juntas. Nada sobra, nada falta.',
+    items:[
+      {n:'01',color:'blue',title:'Entrenamiento de Hipertrofia',desc:'Rutinas diseñadas específicamente para hombres mayores de 25. 45-60 min, 4-5 días por semana. Progresión real, no random.',imageUrl:''},
+      {n:'02',color:'green',title:'Nutrición Sin Dietas de Moda',desc:'Un plan de alimentación que se adapta a tu vida, no al revés. Macros calculados, recetas prácticas, sin pasar hambre.',imageUrl:''},
+      {n:'03',color:'purple',title:'Acompañamiento Directo Conmigo',desc:'Me escribís y yo respondo. Grupo privado, check-in semanal y soporte real cuando más lo necesitás.',imageUrl:''}
+    ]
+  },
+  testimonials:[
+    {avatar:'💪',avatarUrl:'',name:'Martín R.',age:31,result:'+8 kg de músculo en 90 días',text:'Antes entrenaba solo y no veía resultados. Con Leo entendí por qué. El seguimiento semanal es lo que hace la diferencia — sabe exactamente qué ajustar y cuándo.',rating:5,beforeUrl:'',afterUrl:''},
+    {avatar:'🏋️',avatarUrl:'',name:'Diego F.',age:28,result:'-5% grasa · +4 kg músculo',text:'Probé mil programas de YouTube sin ningún resultado. Lo que cambió todo fue tener un plan hecho para mí y alguien que me respondiera cuando me trababa.',rating:5,beforeUrl:'',afterUrl:''},
+    {avatar:'🔥',avatarUrl:'',name:'Lucas M.',age:35,result:'+8 kg de masa en 3 meses',text:'A los 35 pensé que ya era tarde. Leo me demostró que no. En 90 días conseguí más músculo que en los 3 años anteriores entrenando solo.',rating:5,beforeUrl:'',afterUrl:''}
+  ],
+  cta:{ title:'¿Listo para que esto cambie?', sub:'Completá el formulario y en menos de 24 hs te escribo con tu plan.', btn:'QUIERO MI PLAN AHORA' },
+  social:{ ig:'#', yt:'#', li:'#', wa:'', email:'allfit.asesorias@gmail.com' },
+  footer:{ tagline:'Entrenamiento personalizado para hombres mayores de 25 que quieren masa muscular real.', copy:'© 2026 ALLFIT · Leo Massud. Todos los derechos reservados.' },
+  form:{ title:'Hablemos de tu caso', sub:'Completá el formulario y en menos de 24 hs te contacto con tu plan personalizado.', btn:'QUIERO MI PLAN CON LEO', okTitle:'¡Listo, te escribo pronto!', okMsg:'Revisé tus datos y en menos de 24 hs te mando tu plan personalizado. Mientras tanto, seguime en Instagram @leo.allfit 💪', formspree:'',
+    fields:[
+      {id:'nombre', label:'Nombre completo', type:'text', required:true, errMsg:'Ingresá tu nombre', half:true},
+      {id:'email',  label:'Email',           type:'email',required:true, errMsg:'Email inválido',    half:true},
+      {id:'edad',   label:'Edad',            type:'number',required:true,errMsg:'Mínimo 25 años',    half:true},
+      {id:'peso',   label:'Peso (kg)',       type:'number',required:true,errMsg:'Ingresá tu peso',   half:true},
+      {id:'experiencia',label:'Experiencia', type:'select',required:true,errMsg:'Seleccioná una opción', half:true,
+        options:'Principiante (menos de 1 año)|Intermedio (1-3 años)|Avanzado (más de 3 años)'},
+      {id:'objetivo',label:'Objetivo',       type:'select',required:true,errMsg:'Seleccioná una opción', half:true,
+        options:'Ganar masa muscular|Perder grasa y mantener músculo|Fuerza pura'},
+      {id:'telefono',label:'WhatsApp',       type:'tel',  required:true, errMsg:'Ingresá tu WhatsApp',  half:true},
+      {id:'instagram',label:'Instagram',     type:'text', required:true, errMsg:'Ingresá tu Instagram', half:true}
+    ]
+  }
+};
+
+/* ══ LOAD / SAVE CONFIG ══ */
+function loadCfg(){ try{ return Object.assign({},DEFAULT,JSON.parse(localStorage.getItem('allfit_cfg')||'{}')); }catch(e){ return DEFAULT; } }
+function saveCfg(cfg){
+  localStorage.setItem('allfit_cfg',JSON.stringify(cfg));
+}
+let CFG = loadCfg();
+
+function deepMerge(base,over){
+  const out=Object.assign({},base);
+  for(const k in over){ if(over[k]&&typeof over[k]==='object'&&!Array.isArray(over[k])){ out[k]=deepMerge(base[k]||{},over[k]); }else{ out[k]=over[k]; } }
+  return out;
+}
+CFG = deepMerge(DEFAULT, CFG);
+
+/* ══ RENDER LANDING ══ */
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function stars(n){ return '★'.repeat(Math.min(5,n||5)); }
+
+function applyColors(c){
+  const r=document.documentElement;
+  r.style.setProperty('--c-primary',c.primary||'#1F2937');
+  r.style.setProperty('--c-accent',c.accent||'#2563EB');
+  r.style.setProperty('--c-green',c.green||'#10B981');
+  r.style.setProperty('--c-purple',c.purple||'#8B5CF6');
+  r.style.setProperty('--c-bg-light',c.bgLight||'#F3F4F6');
+  r.style.setProperty('--c-bg-dark',c.bgDark||'#0F172A');
+  r.style.setProperty('--c-text-sec',c.textSec||'#6B7280');
+}
+
+function renderHero(h){
+  document.getElementById('hero-bg').style.backgroundImage=`url('${h.bgImage}')`;
+  document.getElementById('hero-badge').innerHTML=h.badge||'';
+  document.getElementById('hero-h1').innerHTML=h.headline||'';
+  document.getElementById('hero-sub').textContent=h.sub||'';
+  document.getElementById('hero-cta-text').textContent=h.cta||'';
+  document.getElementById('hero-stats').innerHTML=(h.stats||[]).map(s=>
+    `<div class="hero-stat"><strong>${esc(s.v)}</strong><span>${esc(s.l)}</span></div>`
+  ).join('');
+}
+
+function renderValue(v){
+  document.getElementById('value-container').innerHTML=`
+    <span class="section-label animate">Por qué ALLFIT</span>
+    <h2 class="section-title animate">${esc(v.title)}</h2>
+    <p class="section-sub animate">${esc(v.sub)}</p>
+    <div class="value-grid">${(v.items||[]).map(i=>`
+      <div class="value-item animate">
+        <div class="value-icon">${i.icon||'✓'}</div>
+        <div><h3>${esc(i.title)}</h3><p>${esc(i.desc)}</p></div>
+      </div>`).join('')}
+    </div>`;
+}
+
+const PILAR_ICONS={
+  blue:`<svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>`,
+  green:`<svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 0 1 7 7c0 5-7 13-7 13S5 14 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+  purple:`<svg viewBox="0 0 24 24" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>`
+};
+function renderPillars(p){
+  document.getElementById('pillars-container').innerHTML=`
+    <span class="section-label animate">El programa completo</span>
+    <h2 class="section-title animate">${esc(p.title)}</h2>
+    <p class="section-sub animate">${esc(p.sub)}</p>
+    <div class="pillars-grid">${(p.items||[]).map(i=>`
+      <div class="pillar-card ${esc(i.color)} animate">
+        ${i.imageUrl
+          ? `<div class="pillar-img-wrap"><img src="${esc(i.imageUrl)}" alt="${esc(i.title)}" class="pillar-img"/></div>`
+          : `<div class="pillar-icon ${esc(i.color)}">${PILAR_ICONS[i.color]||''}</div>`
+        }
+        <div class="pillar-number ${esc(i.color)}">Pilar ${esc(i.n)}</div>
+        <h3>${esc(i.title)}</h3><p>${esc(i.desc)}</p>
+      </div>`).join('')}
+    </div>`;
+}
+
+function renderTestimonials(items){
+  document.getElementById('testi-grid').innerHTML=(items||[]).map(t=>{
+    const hasPhotos=t.beforeUrl||t.afterUrl;
+    const photos=hasPhotos?`<div class="before-after">
+      <div class="ba-photo">${t.beforeUrl?`<img src="${esc(t.beforeUrl)}" alt="Antes"/>`:'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#CBD5E1;font-size:24px">📷</div>'}<span class="ba-label antes">Antes</span></div>
+      <span class="ba-arrow">→</span>
+      <div class="ba-photo">${t.afterUrl?`<img src="${esc(t.afterUrl)}" alt="Después"/>`:'<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#CBD5E1;font-size:24px">📷</div>'}<span class="ba-label despues">Después</span></div>
+    </div>`:'';
+    return `<div class="testimonial-card animate">
+      ${photos}
+      <div class="testimonial-stars">${stars(t.rating)}</div>
+      <p class="testimonial-text">"${esc(t.text)}"</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">${t.avatarUrl?`<img src="${esc(t.avatarUrl)}" alt="${esc(t.name)}" />`:(t.avatar||'👤')}</div>
+        <div class="author-info"><strong>${esc(t.name)}, ${esc(t.age)} años</strong><span>${esc(t.result)}</span></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderCta(c){
+  document.getElementById('cta-title').textContent=c.title||'';
+  document.getElementById('cta-sub').textContent=c.sub||'';
+  document.getElementById('cta-btn-text').textContent=c.btn||'';
+}
+
+function renderSocial(s){
+  const links=[
+    {k:'ig',l:'Instagram',icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`},
+    {k:'yt',l:'YouTube',icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>`},
+    {k:'li',l:'LinkedIn',icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`}
+  ];
+  document.getElementById('social-links').innerHTML=links.map(l=>
+    `<a href="${esc(s[l.k]||'#')}" class="social-link" aria-label="${l.l}" target="_blank" rel="noopener">${l.icon}</a>`
+  ).join('');
+  const emailEl=document.getElementById('foot-email-link');
+  if(emailEl&&s.email){ emailEl.href=`mailto:${s.email}`; emailEl.textContent=s.email; }
+}
+
+function renderFooter(f){
+  const el=document.getElementById('foot-tagline'); if(el) el.textContent=f.tagline||'';
+  const cp=document.getElementById('foot-copy'); if(cp) cp.textContent=f.copy||'';
+}
+
+function renderForm(f){
+  document.getElementById('form-title').textContent=f.title||'';
+  document.getElementById('form-sub').textContent=f.sub||'';
+  document.getElementById('form-ok-title').textContent=f.okTitle||'';
+  document.getElementById('form-ok-msg').textContent=f.okMsg||'';
+  renderFormFields(f.fields||[],f.btn||'ENVIAR');
+}
+function renderFormFields(fields, btnText){
+  const c=document.getElementById('form-fields-container');
+  if(!c) return;
+  c.innerHTML=fields.map(f=>{
+    const req=f.required?`<span>*</span>`:'';
+    const cls='form-group'+(f.half===false?' full':'');
+    if(f.type==='select'){
+      const opts=(f.options||'').split('|').filter(Boolean).map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join('');
+      return `<div class="${cls}"><label for="${esc(f.id)}">${esc(f.label)} ${req}</label>
+        <select id="${esc(f.id)}" name="${esc(f.id)}"><option value="">Seleccioná una opción</option>${opts}</select>
+        <span class="field-error" id="err-${esc(f.id)}">${esc(f.errMsg||'Campo requerido')}</span></div>`;
+    }
+    return `<div class="${cls}"><label for="${esc(f.id)}">${esc(f.label)} ${req}</label>
+      <input type="${esc(f.type||'text')}" id="${esc(f.id)}" name="${esc(f.id)}" />
+      <span class="field-error" id="err-${esc(f.id)}">${esc(f.errMsg||'Campo requerido')}</span></div>`;
+  }).join('')+`
+  <button type="submit" class="submit-btn" id="submitBtn">
+    <span id="btnText">${esc(btnText)}</span>
+    <svg id="btnArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <svg id="btnSpinner" style="display:none;animation:spin 1s linear infinite" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10" stroke-opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+  </button>
+  <p class="form-note">🔒 Tu información está segura.</p>`;
+}
+
+function renderAll(){
+  applyColors(CFG.colors);
+  renderHero(CFG.hero);
+  renderValue(CFG.value);
+  renderPillars(CFG.pillars);
+  renderTestimonials(CFG.testimonials);
+  initCarousel();
+  renderCta(CFG.cta);
+  renderSocial(CFG.social);
+  renderFooter(CFG.footer);
+  renderForm(CFG.form);
+  initAnimations();
+}
+
+/* ══ MARQUEE INFINITO ══ */
+let marqueeX=0, marqueePaused=false, marqueeSpeed=0.6, marqueeRAF, marqueeTotalW=0;
+function initCarousel(){
+  const grid=document.getElementById('testi-grid');
+  if(!grid) return;
+  // cancelar RAF anterior si existe
+  cancelAnimationFrame(marqueeRAF);
+  // limpiar clones previos
+  grid.querySelectorAll('.testi-clone').forEach(c=>c.remove());
+  const origCards=Array.from(grid.querySelectorAll('.testimonial-card:not(.testi-clone)'));
+  if(!origCards.length) return;
+  // clonar para loop infinito (3 sets)
+  origCards.forEach(c=>{ const cl=c.cloneNode(true); cl.classList.add('testi-clone'); grid.appendChild(cl); });
+  origCards.forEach(c=>{ const cl=c.cloneNode(true); cl.classList.add('testi-clone'); grid.appendChild(cl); });
+  // medir ancho del set original
+  requestAnimationFrame(()=>{
+    const gap=20;
+    marqueeTotalW=origCards.reduce((sum,c)=>sum+c.offsetWidth+gap,0);
+    marqueeX=0;
+    grid.style.transform='translateX(0)';
+    marqueeLoop();
+  });
+}
+function marqueeLoop(){
+  if(!marqueePaused){
+    marqueeX-=marqueeSpeed;
+    if(marqueeTotalW>0 && Math.abs(marqueeX)>=marqueeTotalW) marqueeX=0;
+    document.getElementById('testi-grid').style.transform=`translateX(${marqueeX}px)`;
+  }
+  marqueeRAF=requestAnimationFrame(marqueeLoop);
+}
+
+// pausa al hover
+const mOuter=document.getElementById('marquee-outer');
+mOuter.addEventListener('mouseenter',()=>marqueePaused=true);
+mOuter.addEventListener('mouseleave',()=>marqueePaused=false);
+
+// flechas: cambian velocidad/dirección
+document.getElementById('carousel-prev').addEventListener('click',()=>{
+  marqueeX+=120; // salta hacia atrás
+});
+document.getElementById('carousel-next').addEventListener('click',()=>{
+  marqueeX-=120; // salta hacia adelante
+});
+
+// drag con mouse
+(()=>{
+  let dragging=false, dragStartX=0, dragStartMarquee=0;
+  mOuter.addEventListener('mousedown',e=>{
+    dragging=true; dragStartX=e.clientX; dragStartMarquee=marqueeX;
+    marqueePaused=true;
+  });
+  window.addEventListener('mousemove',e=>{
+    if(!dragging) return;
+    marqueeX=dragStartMarquee+(e.clientX-dragStartX);
+  });
+  window.addEventListener('mouseup',()=>{ dragging=false; marqueePaused=false; });
+})();
+
+// touch
+(()=>{
+  let startX=0, startMq=0;
+  mOuter.addEventListener('touchstart',e=>{ startX=e.touches[0].clientX; startMq=marqueeX; marqueePaused=true; },{passive:true});
+  mOuter.addEventListener('touchmove',e=>{ marqueeX=startMq+(e.touches[0].clientX-startX); },{passive:true});
+  mOuter.addEventListener('touchend',()=>{ marqueePaused=false; },{passive:true});
+})();
+
+/* ══ LANDING INTERACTIONS ══ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',scrollY>20);
+  document.getElementById('scrollTop').classList.toggle('visible',scrollY>400);
+});
+document.getElementById('scrollTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+const hbg=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
+hbg.addEventListener('click',()=>{ hbg.classList.toggle('open'); mm.classList.toggle('open'); });
+mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ hbg.classList.remove('open'); mm.classList.remove('open'); }));
+
+function initAnimations(){
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{ if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('in'),i*80); obs.unobserve(e.target); } });
+  },{threshold:.1});
+  document.querySelectorAll('.animate').forEach(el=>{ el.classList.remove('in'); obs.observe(el); });
+}
+
+/* ══ FORM SUBMIT ══ */
+document.getElementById('leadForm').addEventListener('submit',async(e)=>{
+  e.preventDefault();
+  const get=id=>document.getElementById(id);
+  const showErr=(id,show)=>{
+    const el=get(id), er=get('err-'+id);
+    if(el) el.classList.toggle('error',show);
+    if(er) er.classList.toggle('show',show);
+  };
+  const fields=CFG.form.fields||[];
+  fields.forEach(f=>showErr(f.id,false));
+  let ok=true;
+  const payload={};
+  fields.forEach(f=>{
+    const el=get(f.id); if(!el) return;
+    const val=el.value.trim();
+    payload[f.id]=val;
+    if(f.required&&!val){ showErr(f.id,true); ok=false; }
+    // validaciones especiales
+    if(f.type==='email'&&val&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val)){ showErr(f.id,true); ok=false; }
+    if(f.id==='edad'&&val&&parseInt(val)<18){ showErr(f.id,true); ok=false; }
+  });
+  if(!ok){ document.querySelector('.error')?.scrollIntoView({behavior:'smooth',block:'center'}); return; }
+
+  const btn=get('submitBtn'), txt=get('btnText'), arr=get('btnArrow'), spn=get('btnSpinner');
+  btn.disabled=true; txt.textContent='Enviando...'; arr.style.display='none'; spn.style.display='block';
+
+  try{
+    const fid=CFG.form.formspree;
+    if(fid&&fid.length>4){
+      const res=await fetch(`https://formspree.io/f/${fid}`,{
+        method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body:JSON.stringify(payload)
+      });
+      if(!res.ok) throw new Error('Error al enviar');
+    } else {
+      await new Promise(r=>setTimeout(r,900));
+    }
+    get('leadForm').style.display='none';
+    get('formSuccess').classList.add('show');
+    get('formSuccess').scrollIntoView({behavior:'smooth',block:'center'});
+  }catch(err){
+    btn.disabled=false; txt.textContent=CFG.form.btn||'ENVIAR';
+    arr.style.display='block'; spn.style.display='none';
+    alert('Error al enviar. Escribinos a '+(CFG.social.email||'allfit.asesorias@gmail.com'));
+  }
+});
+
+/* ══════════════════════════════════════════
+   ADMIN PANEL
+══════════════════════════════════════════ */
+const ADM_KEY='allfit_adm_ok';
+const ADM_HASH_KEY='allfit_adm_hash';
+const overlay=document.getElementById('adm-overlay');
+const hotspot=document.getElementById('adm-hotspot');
+let admOpen=false, clicks=0, clickTimer;
+let ghLastKnownSha=localStorage.getItem('allfit_gh_sha')||null;
+
+async function sha256(str){
+  const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+async function getAdminHash(){
+  if(CFG._meta?.adminHash) return CFG._meta.adminHash;
+  const stored=localStorage.getItem(ADM_HASH_KEY);
+  if(stored) return stored;
+  return sha256('wingwing14');
+}
+
+function openAdmin(){
+  overlay.classList.add('open');
+  admOpen=true;
+  document.body.style.overflow='hidden';
+  if(localStorage.getItem(ADM_KEY)==='1'){ showAdmBody(); autoSyncOnOpen(); }
+  else{ showAdmLogin(); }
+}
+async function autoSyncOnOpen(){
+  try{
+    const r=await fetch(GH_RAW+'?t='+Date.now());
+    if(!r.ok) return;
+    const j=await r.json();
+    const fresh=deepMerge(DEFAULT,j);
+    if(JSON.stringify(fresh)!==JSON.stringify(CFG)){
+      CFG=fresh; saveCfg(CFG); renderAll(); populateAdmin();
+      admToast('🔄 Config actualizada desde GitHub');
+    }
+  }catch(e){}
+}
+function closeAdmin(){
+  overlay.classList.remove('open');
+  admOpen=false;
+  document.body.style.overflow='';
+}
+
+function showAdmLogin(){
+  document.getElementById('adm-login').style.display='flex';
+  document.getElementById('adm-app').style.display='none';
+}
+function showAdmBody(){
+  document.getElementById('adm-login').style.display='none';
+  document.getElementById('adm-app').style.display='flex';
+  populateAdmin();
+}
+
+/* login */
+document.getElementById('adm-login-btn').addEventListener('click',doLogin);
+document.getElementById('adm-pass').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
+async function doLogin(){
+  const pass=document.getElementById('adm-pass').value;
+  const errEl=document.getElementById('adm-login-err');
+  const hash=await sha256(pass);
+  const stored=await getAdminHash();
+  if(hash===stored){
+    errEl.style.display='none';
+    localStorage.setItem(ADM_KEY,'1');
+    localStorage.setItem(ADM_HASH_KEY,hash);
+    document.getElementById('adm-pass').value='';
+    showAdmBody();
+  } else {
+    errEl.style.display='block';
+  }
+}
+document.getElementById('adm-logout').addEventListener('click',()=>{
+  localStorage.removeItem(ADM_KEY); showAdmLogin();
+});
+document.getElementById('adm-close').addEventListener('click',closeAdmin);
+overlay.addEventListener('click',e=>{ if(e.target===overlay) closeAdmin(); });
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&admOpen) closeAdmin(); });
+
+/* hotspot triple click */
+hotspot.addEventListener('click',()=>{
+  clicks++; clearTimeout(clickTimer);
+  clickTimer=setTimeout(()=>clicks=0,900);
+  if(clicks>=3){ clicks=0; openAdmin(); }
+});
+
+/* section nav */
+const SEC_TITLES={hero:'Hero',valor:'Beneficios',pilares:'Pilares',testimonios:'Testimonios',colores:'Colores',redes:'Redes sociales',formulario:'Formulario',cta:'CTA & Footer',sync:'Sincronización'};
+document.querySelectorAll('.adm-nav-item').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.adm-nav-item').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.adm-sec').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const sec=btn.dataset.sec;
+    document.getElementById('sec-'+sec).classList.add('active');
+    document.getElementById('adm-sec-title').textContent=SEC_TITLES[sec]||sec;
+    document.getElementById('adm-content').scrollTop=0;
+  });
+});
+
+/* toast */
+let toastTimer;
+function admToast(msg,type='ok'){
+  const t=document.getElementById('adm-toast');
+  t.textContent=msg; t.className='show '+(type==='err'?'err':type==='warn'?'warn':'ok');
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+/* ── populate admin fields ── */
+function populateAdmin(){
+  const c=CFG;
+  // hero
+  document.getElementById('c-hero-badge').value=c.hero.badge||'';
+  document.getElementById('c-hero-headline').value=c.hero.headline||'';
+  document.getElementById('c-hero-sub').value=c.hero.sub||'';
+  document.getElementById('c-hero-cta').value=c.hero.cta||'';
+  document.getElementById('c-hero-img').value=c.hero.bgImage||'';
+  (c.hero.stats||[]).forEach((s,i)=>{
+    const vi=document.getElementById(`c-stat${i+1}-val`), li=document.getElementById(`c-stat${i+1}-lbl`);
+    if(vi) vi.value=s.v||''; if(li) li.value=s.l||'';
+  });
+  // value items
+  document.getElementById('c-val-title').value=c.value.title||'';
+  document.getElementById('c-val-sub').value=c.value.sub||'';
+  document.getElementById('c-val-items').innerHTML=(c.value.items||[]).map((it,i)=>valItemHtml(it,i)).join('');
+  // pillars
+  document.getElementById('c-pil-title').value=c.pillars.title||'';
+  document.getElementById('c-pil-sub').value=c.pillars.sub||'';
+  document.getElementById('c-pil-items').innerHTML=(c.pillars.items||[]).map((it,i)=>pilItemHtml(it,i)).join('');
+  // cta
+  document.getElementById('c-cta-title').value=c.cta.title||'';
+  document.getElementById('c-cta-sub').value=c.cta.sub||'';
+  document.getElementById('c-cta-btn').value=c.cta.btn||'';
+  // footer
+  document.getElementById('c-foot-tag').value=c.footer.tagline||'';
+  document.getElementById('c-foot-copy').value=c.footer.copy||'';
+  // colors
+  const colorDefs=[
+    {k:'primary',l:'Primario (botones)'},{k:'accent',l:'Acento (azul)'},
+    {k:'green',l:'Verde (Nutrición)'},{k:'purple',l:'Púrpura (Comunidad)'},
+    {k:'bgLight',l:'Fondo claro'},{k:'bgDark',l:'Fondo oscuro'},{k:'textSec',l:'Texto secundario'}
+  ];
+  document.getElementById('color-grid').innerHTML=colorDefs.map(cd=>`
+    <div class="adm-color-card">
+      <label>${cd.l}</label>
+      <div class="adm-color-row">
+        <input type="color" data-ck="${cd.k}" value="${c.colors[cd.k]||'#000000'}"/>
+        <input type="text" data-ct="${cd.k}" value="${c.colors[cd.k]||'#000000'}" maxlength="7"/>
+      </div>
+    </div>`).join('');
+  updateColorPreview();
+  document.querySelectorAll('[data-ck]').forEach(p=>{
+    p.addEventListener('input',()=>{
+      const k=p.dataset.ck, t=document.querySelector(`[data-ct="${k}"]`);
+      if(t) t.value=p.value; CFG.colors[k]=p.value; updateColorPreview();
+    });
+  });
+  document.querySelectorAll('[data-ct]').forEach(t=>{
+    t.addEventListener('input',()=>{
+      const k=t.dataset.ct, v=t.value.trim();
+      if(/^#[0-9A-Fa-f]{6}$/.test(v)){ const p=document.querySelector(`[data-ck="${k}"]`); if(p) p.value=v; CFG.colors[k]=v; updateColorPreview(); }
+    });
+  });
+  // testimonials
+  document.getElementById('testi-items').innerHTML=(c.testimonials||[]).map((t,i)=>testiItemHtml(t,i)).join('');
+  setupUploadListeners();
+  setupClearBtns();
+  // redes
+  document.getElementById('r-ig').value=c.social.ig||'';
+  document.getElementById('r-yt').value=c.social.yt||'';
+  document.getElementById('r-li').value=c.social.li||'';
+  document.getElementById('r-wa').value=c.social.wa||'';
+  document.getElementById('r-email').value=c.social.email||'';
+  // form
+  document.getElementById('f-title').value=c.form.title||'';
+  document.getElementById('f-sub').value=c.form.sub||'';
+  document.getElementById('f-btn').value=c.form.btn||'';
+  document.getElementById('f-ok-title').value=c.form.okTitle||'';
+  document.getElementById('f-ok-msg').value=c.form.okMsg||'';
+  document.getElementById('f-formspree').value=c.form.formspree||'';
+  renderAdmFields(c.form.fields||[]);
+  // sync
+  const savedToken=localStorage.getItem('allfit_gh_token')||'';
+  document.getElementById('sync-gh-token').value=savedToken;
+  document.getElementById('sync-info').textContent=savedToken
+    ?'✅ Conectado a GitHub · leoallfit/page3'
+    :'No configurado. Seguí los pasos de arriba.';
+}
+
+function updateColorPreview(){
+  const c=CFG.colors;
+  document.getElementById('color-preview').style.background=c.primary||'#1F2937';
+  document.getElementById('prev-btn').style.background=c.accent||'#2563EB';
+  document.getElementById('prev-blue').style.background=c.accent||'#2563EB';
+  document.getElementById('prev-green').style.background=c.green||'#10B981';
+  document.getElementById('prev-purp').style.background=c.purple||'#8B5CF6';
+}
+
+/* ── AUTO-PUBLISH: si el token está guardado, publica automáticamente en GitHub ── */
+async function autoPublish(){
+  const token=localStorage.getItem('allfit_gh_token');
+  if(!token){ admToast('⚠️ Guardado localmente. Configurá el token GitHub en "Sincronización" para publicar a todos.','warn'); return; }
+  try{
+    const sha=await ghGetFileSha(token);
+    const body={message:'Actualizar config desde admin panel',content:btoa(unescape(encodeURIComponent(JSON.stringify(CFG,null,2))))};
+    if(sha) body.sha=sha;
+    const r=await fetch(GH_API,{method:'PUT',headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},body:JSON.stringify(body)});
+    if(r.ok){
+      const result=await r.json();
+      const newSha=result.content?.sha;
+      if(newSha){ ghLastKnownSha=newSha; localStorage.setItem('allfit_gh_sha',newSha); }
+      admToast('✅ Guardado y publicado para todos los visitantes');
+    } else {
+      admToast('❌ Error al publicar en GitHub. El cambio se guardó localmente.','warn');
+    }
+  }catch(e){ admToast('❌ Error de red al publicar. El cambio se guardó localmente.','warn'); }
+}
+
+/* ── save handlers ── */
+function saveHero(){
+  CFG.hero.badge=document.getElementById('c-hero-badge').value;
+  CFG.hero.headline=document.getElementById('c-hero-headline').value;
+  CFG.hero.sub=document.getElementById('c-hero-sub').value;
+  CFG.hero.cta=document.getElementById('c-hero-cta').value;
+  CFG.hero.bgImage=document.getElementById('c-hero-img').value;
+  [0,1,2].forEach(i=>{
+    const v=document.getElementById(`c-stat${i+1}-val`), l=document.getElementById(`c-stat${i+1}-lbl`);
+    if(!CFG.hero.stats[i]) CFG.hero.stats[i]={};
+    if(v) CFG.hero.stats[i].v=v.value; if(l) CFG.hero.stats[i].l=l.value;
+  });
+  saveCfg(CFG); renderHero(CFG.hero); admToast('✅ Hero guardado'); autoPublish();
+}
+function saveValor(){
+  CFG.value.title=document.getElementById('c-val-title').value;
+  CFG.value.sub=document.getElementById('c-val-sub').value;
+  CFG.value.items=Array.from(document.querySelectorAll('#c-val-items .adm-val-item')).map(d=>({
+    icon:d.querySelector('.vi-icon').value,
+    title:d.querySelector('.vi-title').value,
+    desc:d.querySelector('.vi-desc').value
+  }));
+  saveCfg(CFG); renderValue(CFG.value); initAnimations(); admToast('✅ Beneficios guardados'); autoPublish();
+}
+function savePilares(){
+  CFG.pillars.title=document.getElementById('c-pil-title').value;
+  CFG.pillars.sub=document.getElementById('c-pil-sub').value;
+  CFG.pillars.items=Array.from(document.querySelectorAll('#c-pil-items .adm-pil-item')).map((d,i)=>({
+    n:String(i+1).padStart(2,'0'),
+    color:d.querySelector('.pi-color').value,
+    title:d.querySelector('.pi-title').value,
+    desc:d.querySelector('.pi-desc').value,
+    imageUrl:d.querySelector('.pi-imageUrl').value||CFG.pillars.items[i]?.imageUrl||''
+  }));
+  saveCfg(CFG); renderPillars(CFG.pillars); initAnimations(); admToast('✅ Pilares guardados'); autoPublish();
+}
+function saveTestimonios(){
+  CFG.testimonials=Array.from(document.querySelectorAll('#testi-items .adm-testi-item')).map((d,i)=>({
+    name:d.querySelector('.tt-name').value,
+    age:parseInt(d.querySelector('.tt-age').value)||0,
+    result:d.querySelector('.tt-result').value,
+    text:d.querySelector('.tt-text').value,
+    avatar:d.querySelector('.tt-avatar').value,
+    avatarUrl:d.querySelector('.tt-avatarUrl').value||CFG.testimonials[i]?.avatarUrl||'',
+    rating:5,
+    beforeUrl:CFG.testimonials[i]?CFG.testimonials[i].beforeUrl||'':'',
+    afterUrl:CFG.testimonials[i]?CFG.testimonials[i].afterUrl||'':''
+  }));
+  saveCfg(CFG); renderTestimonials(CFG.testimonials); initCarousel(); admToast('✅ Testimonios guardados'); autoPublish();
+}
+function saveColores(){
+  saveCfg(CFG); applyColors(CFG.colors); admToast('✅ Colores guardados'); autoPublish();
+}
+function saveRedes(){
+  CFG.social.ig=document.getElementById('r-ig').value;
+  CFG.social.yt=document.getElementById('r-yt').value;
+  CFG.social.li=document.getElementById('r-li').value;
+  CFG.social.wa=document.getElementById('r-wa').value;
+  CFG.social.email=document.getElementById('r-email').value;
+  saveCfg(CFG); renderSocial(CFG.social); admToast('✅ Redes guardadas'); autoPublish();
+}
+function saveFormulario(){
+  CFG.form.title=document.getElementById('f-title').value;
+  CFG.form.sub=document.getElementById('f-sub').value;
+  CFG.form.btn=document.getElementById('f-btn').value;
+  CFG.form.okTitle=document.getElementById('f-ok-title').value;
+  CFG.form.okMsg=document.getElementById('f-ok-msg').value;
+  CFG.form.formspree=document.getElementById('f-formspree').value;
+  CFG.form.fields=Array.from(document.querySelectorAll('#f-fields-list .adm-field-item')).map(d=>({
+    id: d.querySelector('.ff-id').value.trim().replace(/\s+/g,'_').toLowerCase(),
+    label: d.querySelector('.ff-label').value,
+    type: d.querySelector('.ff-type').value,
+    required: d.querySelector('.ff-req').checked,
+    errMsg: d.querySelector('.ff-err').value,
+    half: d.querySelector('.ff-half').value==='half',
+    options: d.querySelector('.ff-options').value
+  }));
+  saveCfg(CFG); renderForm(CFG.form); admToast('✅ Formulario guardado'); autoPublish();
+}
+/* ── ADMIN FORM FIELDS ── */
+function fFieldHtml(f,i){
+  const types=[['text','Texto'],['email','Email'],['number','Número'],['tel','WhatsApp/Tel'],['select','Selección (opciones)'],['textarea','Texto largo']];
+  const typeOpts=types.map(([v,l])=>`<option value="${v}"${f.type===v?' selected':''}>${l}</option>`).join('');
+  const showOpts=f.type==='select';
+  return `<div class="adm-field-item adm-item-card" style="border-left:3px solid var(--c-accent)">
+    <div class="adm-item-hdr">
+      <span class="adm-item-num" style="font-weight:700">CAMPO ${i+1}</span>
+      <div style="display:flex;gap:6px">
+        <button class="ff-move-up adm-del-btn" style="background:#F3F4F6;color:#374151;border-color:#E5E7EB" title="Subir">↑</button>
+        <button class="ff-move-dn adm-del-btn" style="background:#F3F4F6;color:#374151;border-color:#E5E7EB" title="Bajar">↓</button>
+        <button class="ff-del adm-del-btn">✕ Eliminar</button>
+      </div>
+    </div>
+    <div class="adm-row">
+      <div class="adm-f"><label>Etiqueta (visible)</label><input class="ff-label" value="${esc(f.label||'')}"/></div>
+      <div class="adm-f"><label>ID interno (sin espacios)</label><input class="ff-id" value="${esc(f.id||'')}"/></div>
+    </div>
+    <div class="adm-row">
+      <div class="adm-f"><label>Tipo</label>
+        <select class="ff-type">${typeOpts}</select>
+      </div>
+      <div class="adm-f"><label>Ancho</label>
+        <select class="ff-half">
+          <option value="half"${f.half!==false?' selected':''}>Mitad (2 columnas)</option>
+          <option value="full"${f.half===false?' selected':''}>Completo (ancho total)</option>
+        </select>
+      </div>
+    </div>
+    <div class="adm-row">
+      <div class="adm-f"><label>Mensaje de error</label><input class="ff-err" value="${esc(f.errMsg||'Campo requerido')}"/></div>
+      <div class="adm-f" style="justify-content:center;padding-top:22px">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-weight:600">
+          <input type="checkbox" class="ff-req" style="width:16px;height:16px;accent-color:var(--c-accent)"${f.required?' checked':''}/>
+          Obligatorio
+        </label>
+      </div>
+    </div>
+    <div class="adm-f ff-options-wrap" style="display:${showOpts?'flex':'none'}">
+      <label>Opciones (separadas por |)</label>
+      <input class="ff-options" value="${esc(f.options||'')}" placeholder="Opción 1|Opción 2|Opción 3"/>
+    </div>
+  </div>`;
+}
+function renderAdmFields(fields){
+  const list=document.getElementById('f-fields-list');
+  if(!list) return;
+  list.innerHTML=fields.map((f,i)=>fFieldHtml(f,i)).join('');
+  setupFieldListeners();
+}
+function setupFieldListeners(){
+  const list=document.getElementById('f-fields-list');
+  // tipo select → mostrar/ocultar opciones
+  list.querySelectorAll('.ff-type').forEach(sel=>{
+    sel.addEventListener('change',()=>{
+      const wrap=sel.closest('.adm-field-item').querySelector('.ff-options-wrap');
+      wrap.style.display=sel.value==='select'?'flex':'none';
+    });
+  });
+  // eliminar
+  list.querySelectorAll('.ff-del').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      btn.closest('.adm-field-item').remove();
+      renumberFields();
+    });
+  });
+  // subir
+  list.querySelectorAll('.ff-move-up').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.closest('.adm-field-item');
+      const prev=item.previousElementSibling;
+      if(prev) list.insertBefore(item,prev);
+      renumberFields();
+    });
+  });
+  // bajar
+  list.querySelectorAll('.ff-move-dn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.closest('.adm-field-item');
+      const next=item.nextElementSibling;
+      if(next) next.after(item);
+      renumberFields();
+    });
+  });
+}
+function renumberFields(){
+  document.querySelectorAll('#f-fields-list .adm-field-item .adm-item-num').forEach((el,i)=>{
+    el.textContent=`CAMPO ${i+1}`;
+  });
+}
+document.getElementById('add-form-field').addEventListener('click',()=>{
+  const list=document.getElementById('f-fields-list');
+  const i=list.querySelectorAll('.adm-field-item').length;
+  const newF={id:`campo_${i+1}`,label:'Nueva pregunta',type:'text',required:false,errMsg:'Campo requerido',half:true,options:''};
+  list.insertAdjacentHTML('beforeend',fFieldHtml(newF,i));
+  setupFieldListeners();
+  list.lastElementChild.scrollIntoView({behavior:'smooth',block:'nearest'});
+});
+
+function saveCta(){
+  CFG.cta.title=document.getElementById('c-cta-title').value;
+  CFG.cta.sub=document.getElementById('c-cta-sub').value;
+  CFG.cta.btn=document.getElementById('c-cta-btn').value;
+  CFG.footer.tagline=document.getElementById('c-foot-tag').value;
+  CFG.footer.copy=document.getElementById('c-foot-copy').value;
+  saveCfg(CFG); renderCta(CFG.cta); renderFooter(CFG.footer); admToast('✅ CTA & Footer guardados'); autoPublish();
+}
+
+document.getElementById('adm-header-save').addEventListener('click',()=>{
+  const active=document.querySelector('.adm-nav-item.active');
+  if(!active) return;
+  const fn={hero:saveHero,valor:saveValor,pilares:savePilares,testimonios:saveTestimonios,colores:saveColores,redes:saveRedes,formulario:saveFormulario,cta:saveCta,sync:()=>admToast('Usá los botones de sincronización ⬆️','ok')};
+  if(fn[active.dataset.sec]) fn[active.dataset.sec]();
+});
+
+/* ── UPLOAD HELPERS (reusable after add testi) ── */
+function setupUploadListeners(){
+  // ── TESTIMONIOS before/after ──
+  document.querySelectorAll('[data-upload-target]').forEach(div=>{
+    if(div._uploadBound) return; div._uploadBound=true;
+    div.addEventListener('mouseenter',()=>div.style.borderColor='#93C5FD');
+    div.addEventListener('mouseleave',()=>div.style.borderColor='#CBD5E1');
+    div.addEventListener('click',()=>{
+      const [type,idx]=div.dataset.uploadTarget.split('-');
+      document.getElementById(`file-${type}-${idx}`).click();
+    });
+  });
+  document.querySelectorAll('[data-fi]').forEach(input=>{
+    if(input._uploadBound) return; input._uploadBound=true;
+    input.addEventListener('change',e=>{
+      const file=e.target.files[0]; if(!file) return;
+      if(file.size>5*1024*1024){ admToast('⚠️ Imagen muy grande (máx 5MB)','err'); return; }
+      const i=parseInt(input.dataset.fi), ftype=input.dataset.ftype;
+      const imgEl=new Image(), reader=new FileReader();
+      reader.onload=ev=>{
+        imgEl.onload=()=>{
+          const MAX=800; let w=imgEl.width, h=imgEl.height;
+          if(w>MAX||h>MAX){ if(w>h){h=Math.round(h*MAX/w);w=MAX;}else{w=Math.round(w*MAX/h);h=MAX;} }
+          const canvas=document.createElement('canvas');
+          canvas.width=w; canvas.height=h;
+          canvas.getContext('2d').drawImage(imgEl,0,0,w,h);
+          const dataUrl=canvas.toDataURL('image/jpeg',0.82);
+          if(!CFG.testimonials[i]) CFG.testimonials[i]={};
+          if(ftype==='before') CFG.testimonials[i].beforeUrl=dataUrl;
+          else if(ftype==='after') CFG.testimonials[i].afterUrl=dataUrl;
+          else if(ftype==='avatar'){
+            CFG.testimonials[i].avatarUrl=dataUrl;
+            const inp=document.querySelector(`#testi-items .adm-testi-item:nth-child(${i+1}) .tt-avatarUrl`);
+            if(inp) inp.value=dataUrl;
+          }
+          const prev=document.getElementById(`prev-${ftype}-${i}`);
+          if(prev) prev.innerHTML=`<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover"/>`;
+          const clearKey=`${ftype}-${i}`;
+          let cb=document.querySelector(`[data-clear="${clearKey}"]`);
+          if(!cb){
+            cb=document.createElement('button');
+            cb.dataset.clear=clearKey;
+            cb.style.cssText='width:100%;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA;border-radius:6px;padding:5px 8px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:600;margin-top:4px';
+            cb.textContent='✕ Quitar foto';
+            prev.after(cb);
+            setupClearBtnOne(cb);
+          }
+          admToast('📸 Foto cargada — guardá para aplicar');
+        };
+        imgEl.src=ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+  // ── PILARES imagen ──
+  document.querySelectorAll('[data-pil-upload]').forEach(div=>{
+    if(div._pilBound) return; div._pilBound=true;
+    div.addEventListener('mouseenter',()=>div.style.borderColor='#6EE7B7');
+    div.addEventListener('mouseleave',()=>div.style.borderColor='#A7F3D0');
+    div.addEventListener('click',()=>{
+      const i=div.dataset.pilUpload;
+      document.getElementById(`file-pil-${i}`).click();
+    });
+  });
+  document.querySelectorAll('[data-pil-fi]').forEach(input=>{
+    if(input._pilBound) return; input._pilBound=true;
+    input.addEventListener('change',e=>{
+      const file=e.target.files[0]; if(!file) return;
+      if(file.size>5*1024*1024){ admToast('⚠️ Imagen muy grande (máx 5MB)','err'); return; }
+      const i=parseInt(input.dataset.pilFi);
+      const imgEl=new Image(), reader=new FileReader();
+      reader.onload=ev=>{
+        imgEl.onload=()=>{
+          const MAX=1200; let w=imgEl.width, h=imgEl.height;
+          if(w>MAX||h>MAX){ if(w>h){h=Math.round(h*MAX/w);w=MAX;}else{w=Math.round(w*MAX/h);h=MAX;} }
+          const canvas=document.createElement('canvas');
+          canvas.width=w; canvas.height=h;
+          canvas.getContext('2d').drawImage(imgEl,0,0,w,h);
+          const dataUrl=canvas.toDataURL('image/jpeg',0.85);
+          if(!CFG.pillars.items[i]) CFG.pillars.items[i]={};
+          CFG.pillars.items[i].imageUrl=dataUrl;
+          const prev=document.getElementById(`prev-pil-${i}`);
+          if(prev) prev.innerHTML=`<img src="${dataUrl}" style="width:100%;height:100%;object-fit:cover"/>`;
+          // update URL input too
+          const urlInp=prev?.closest('.adm-pil-item')?.querySelector('.pi-imageUrl');
+          if(urlInp) urlInp.value=dataUrl;
+          // add clear btn if not exists
+          const clearKey=`pil-${i}`;
+          let cb=document.querySelector(`[data-pil-clear="${i}"]`);
+          if(!cb){
+            cb=document.createElement('button');
+            cb.dataset.pilClear=i;
+            cb.style.cssText='width:100%;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA;border-radius:6px;padding:5px 8px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:600;margin-top:6px';
+            cb.textContent='✕ Quitar imagen';
+            prev.after(cb);
+            cb.addEventListener('click',()=>{
+              CFG.pillars.items[i].imageUrl='';
+              prev.innerHTML=`<div style="text-align:center;color:#94A3B8;font-size:12px;line-height:1.6;pointer-events:none">🖼️<br><strong>Clic para subir</strong></div>`;
+              const urlInp2=prev?.closest('.adm-pil-item')?.querySelector('.pi-imageUrl');
+              if(urlInp2) urlInp2.value='';
+              cb.remove();
+            });
+          }
+          admToast('🖼️ Imagen cargada — guardá para aplicar');
+        };
+        imgEl.src=ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  });
+  // pil-clear buttons (from HTML, for pre-existing images)
+  document.querySelectorAll('[data-pil-clear]').forEach(btn=>{
+    if(btn._pilClearBound) return; btn._pilClearBound=true;
+    btn.addEventListener('click',()=>{
+      const i=parseInt(btn.dataset.pilClear);
+      if(CFG.pillars.items[i]) CFG.pillars.items[i].imageUrl='';
+      const prev=document.getElementById(`prev-pil-${i}`);
+      if(prev) prev.innerHTML=`<div style="text-align:center;color:#94A3B8;font-size:12px;line-height:1.6;pointer-events:none">🖼️<br><strong>Clic para subir</strong></div>`;
+      const urlInp=prev?.closest('.adm-pil-item')?.querySelector('.pi-imageUrl');
+      if(urlInp) urlInp.value='';
+      btn.remove();
+    });
+  });
+}
+function setupClearBtnOne(btn){
+  if(btn._clearBound) return; btn._clearBound=true;
+  btn.addEventListener('click',()=>{
+    const [ftype,idx]=btn.dataset.clear.split('-');
+    const i=parseInt(idx);
+    if(CFG.testimonials[i]){
+      if(ftype==='before') CFG.testimonials[i].beforeUrl='';
+      else CFG.testimonials[i].afterUrl='';
+    }
+    const prev=document.getElementById(`prev-${ftype}-${i}`);
+    if(prev) prev.innerHTML=`<div style="text-align:center;color:#94A3B8;font-size:12px;line-height:1.6;pointer-events:none">📷<br><strong>Clic para<br>subir foto</strong></div>`;
+    btn.remove();
+  });
+}
+function setupClearBtns(){ document.querySelectorAll('[data-clear]').forEach(setupClearBtnOne); }
+
+/* ── ITEM BUILDER HELPERS ── */
+function valItemHtml(it,i){
+  return `<div class="adm-val-item adm-item-card">
+    <div class="adm-item-hdr">
+      <span class="vi-num adm-item-num">ÍTEM ${i+1}</span>
+      <button class="adm-del-btn del-val">✕ Eliminar</button>
+    </div>
+    <div class="adm-row">
+      <div class="adm-f"><label>Ícono (emoji)</label><input class="vi-icon" value="${esc(it.icon||'')}"/></div>
+      <div class="adm-f"><label>Título</label><input class="vi-title" value="${esc(it.title||'')}"/></div>
+    </div>
+    <div class="adm-f"><label>Descripción</label><input class="vi-desc" value="${esc(it.desc||'')}"/></div>
+  </div>`;
+}
+
+function pilItemHtml(it,i){
+  const col=it.color||'blue';
+  const imgUrl=it.imageUrl||'';
+  return `<div class="adm-pil-item adm-item-card">
+    <div class="adm-item-hdr">
+      <span class="pi-num adm-item-num">PILAR ${i+1}</span>
+      <button class="adm-del-btn del-pil">✕ Eliminar</button>
+    </div>
+    <div class="adm-row">
+      <div class="adm-f"><label>Título</label><input class="pi-title" value="${esc(it.title||'')}"/></div>
+      <div class="adm-f"><label>Color</label>
+        <select class="pi-color">
+          <option value="blue"${col==='blue'?' selected':''}>🔵 Azul</option>
+          <option value="green"${col==='green'?' selected':''}>🟢 Verde</option>
+          <option value="purple"${col==='purple'?' selected':''}>🟣 Púrpura</option>
+        </select>
+      </div>
+    </div>
+    <div class="adm-f"><label>Descripción</label><textarea class="pi-desc">${esc(it.desc||'')}</textarea></div>
+    <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:12px;margin-top:8px">
+      <div style="font-size:11px;font-weight:700;color:#059669;margin-bottom:10px;text-transform:uppercase;letter-spacing:.05em">🖼️ Imagen del pilar (opcional)</div>
+      <div id="prev-pil-${i}" data-pil-upload="${i}" style="width:100%;height:120px;background:#F8FAFC;border:2px dashed #A7F3D0;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s;margin-bottom:8px" title="Clic para subir imagen">
+        ${imgUrl?`<img src="${imgUrl}" style="width:100%;height:100%;object-fit:cover"/>`:`<div style="text-align:center;color:#94A3B8;font-size:12px;line-height:1.6;pointer-events:none">🖼️<br><strong>Clic para subir</strong></div>`}
+      </div>
+      <input type="file" id="file-pil-${i}" accept="image/*" style="display:none" data-pil-fi="${i}">
+      <div class="adm-f" style="margin-top:6px"><label style="font-size:11px">O pegá una URL de imagen</label><input class="pi-imageUrl" value="${esc(imgUrl)}" placeholder="https://..."/></div>
+      ${imgUrl?`<button data-pil-clear="${i}" style="width:100%;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA;border-radius:6px;padding:5px 8px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:600;margin-top:6px">✕ Quitar imagen</button>`:''}
+    </div>
+  </div>`;
+}
+
+function testiItemHtml(t,i){
+  const avUrl=t.avatarUrl||'';
+  return `<div class="adm-testi-item adm-item-card">
+    <div class="adm-item-hdr">
+      <span class="adm-item-num">TESTIMONIO ${i+1}</span>
+      <button class="adm-del-btn del-testi">✕ Eliminar</button>
+    </div>
+    <div class="adm-row">
+      <div class="adm-f"><label>Nombre</label><input class="tt-name" value="${esc(t.name||'')}"/></div>
+      <div class="adm-f"><label>Edad</label><input type="number" class="tt-age" value="${esc(t.age||'')}"/></div>
+    </div>
+    <div class="adm-f"><label>Resultado</label><input class="tt-result" value="${esc(t.result||'')}"/></div>
+    <div class="adm-f"><label>Testimonio</label><textarea class="tt-text">${esc(t.text||'')}</textarea></div>
+    <div class="adm-row">
+      <div class="adm-f"><label>Avatar emoji (si no hay foto)</label><input class="tt-avatar" value="${esc(t.avatar||'')}"/></div>
+      <div class="adm-f"><label>Foto perfil URL</label><input class="tt-avatarUrl" value="${esc(avUrl)}"/></div>
+    </div>
+    <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:12px;margin-top:4px;margin-bottom:4px">
+      <div style="font-size:11px;font-weight:700;color:#7C3AED;margin-bottom:8px;text-transform:uppercase;letter-spacing:.05em">👤 Foto de perfil</div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div id="prev-avatar-${i}" data-upload-target="avatar-${i}" style="width:56px;height:56px;border-radius:50%;background:#F8FAFC;border:2px dashed #C4B5FD;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;font-size:20px" title="Clic para subir foto">
+          ${avUrl?`<img src="${avUrl}" style="width:100%;height:100%;object-fit:cover"/>`:(t.avatar||'👤')}
+        </div>
+        <div style="flex:1">
+          <input type="file" id="file-avatar-${i}" accept="image/*" style="display:none" data-fi="${i}" data-ftype="avatar">
+          <button onclick="document.getElementById('file-avatar-${i}').click()" style="background:#7C3AED;color:#fff;border:none;border-radius:7px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;font-family:inherit">📷 Subir foto de perfil</button>
+          <div style="font-size:11px;color:#94A3B8;margin-top:4px">O pegá la URL arriba</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:12px;margin-top:8px">
+      <div style="font-size:11px;font-weight:700;color:#2563EB;margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em">📸 Fotos Antes / Después</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#DC2626;text-transform:uppercase;margin-bottom:6px">ANTES</div>
+          <div id="prev-before-${i}" data-upload-target="before-${i}" style="width:100%;aspect-ratio:3/4;background:#F8FAFC;border:2px dashed #CBD5E1;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s;margin-bottom:6px" title="Clic para subir foto">
+            ${t.beforeUrl?`<img src="${t.beforeUrl}" style="width:100%;height:100%;object-fit:cover"/>`:`<div style="text-align:center;color:#94A3B8;font-size:12px;line-height:1.6;pointer-events:none">📷<br><strong>Clic para<br>subir foto</strong></div>`}
+          </div>
+          <input type="file" id="file-before-${i}" accept="image/*" style="display:none" data-fi="${i}" data-ftype="before">
+          ${t.beforeUrl?`<button data-clear="before-${i}" style="width:100%;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA;border-radius:6px;padding:5px 8px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:600">✕ Quitar foto</button>`:''}
+        </div>
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#059669;text-transform:uppercase;margin-bottom:6px">DESPUÉS</div>
+          <div id="prev-after-${i}" data-upload-target="after-${i}" style="width:100%;aspect-ratio:3/4;background:#F8FAFC;border:2px dashed #CBD5E1;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s;margin-bottom:6px" title="Clic para subir foto">
+            ${t.afterUrl?`<img src="${t.afterUrl}" style="width:100%;height:100%;object-fit:cover"/>`:`<div style="text-align:center;color:#94A3B8;font-size:12px;line-height:1.6;pointer-events:none">📷<br><strong>Clic para<br>subir foto</strong></div>`}
+          </div>
+          <input type="file" id="file-after-${i}" accept="image/*" style="display:none" data-fi="${i}" data-ftype="after">
+          ${t.afterUrl?`<button data-clear="after-${i}" style="width:100%;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA;border-radius:6px;padding:5px 8px;font-size:11px;cursor:pointer;font-family:inherit;font-weight:600">✕ Quitar foto</button>`:''}
+        </div>
+      </div>
+      <p style="font-size:11px;color:#64748B;margin-top:8px">💡 Clic en el cuadro para elegir una imagen. Se guarda automáticamente comprimida.</p>
+    </div>
+  </div>`;
+}
+
+function renumber(containerId, itemSel, numSel, prefix){
+  document.querySelectorAll(`#${containerId} ${itemSel}`).forEach((d,i)=>{
+    const n=d.querySelector(numSel); if(n) n.textContent=`${prefix} ${i+1}`;
+  });
+}
+
+/* ── add / delete: value items ── */
+document.getElementById('c-val-items').addEventListener('click',e=>{
+  if(e.target.classList.contains('del-val')){
+    e.target.closest('.adm-val-item').remove();
+    renumber('c-val-items','.adm-val-item','.vi-num','ÍTEM');
+  }
+});
+document.getElementById('add-val-item').addEventListener('click',()=>{
+  const c=document.getElementById('c-val-items');
+  const i=c.querySelectorAll('.adm-val-item').length;
+  c.insertAdjacentHTML('beforeend',valItemHtml({icon:'✓',title:'',desc:''},i));
+});
+
+/* ── add / delete: pillars ── */
+document.getElementById('c-pil-items').addEventListener('click',e=>{
+  if(e.target.classList.contains('del-pil')){
+    e.target.closest('.adm-pil-item').remove();
+    renumber('c-pil-items','.adm-pil-item','.pi-num','PILAR');
+    document.querySelectorAll('#c-pil-items .adm-pil-item .pi-num-val').forEach((el,i)=>el.value=i+1);
+  }
+});
+document.getElementById('add-pil-item').addEventListener('click',()=>{
+  const c=document.getElementById('c-pil-items');
+  const i=c.querySelectorAll('.adm-pil-item').length;
+  const colors=['blue','green','purple'];
+  c.insertAdjacentHTML('beforeend',pilItemHtml({title:'',desc:'',color:colors[i%3]},i));
+});
+
+/* ── add / delete: testimonials ── */
+document.getElementById('add-testi').addEventListener('click',()=>{
+  const c=document.getElementById('testi-items');
+  const i=c.querySelectorAll('.adm-testi-item').length;
+  CFG.testimonials.push({avatar:'⭐',avatarUrl:'',name:'',age:0,result:'',text:'',rating:5,beforeUrl:'',afterUrl:''});
+  c.insertAdjacentHTML('beforeend',testiItemHtml(CFG.testimonials[i],i));
+  setupUploadListeners();
+  setupClearBtns();
+});
+document.getElementById('testi-items').addEventListener('click',e=>{
+  if(e.target.classList.contains('del-testi')){
+    const item=e.target.closest('.adm-testi-item');
+    const idx=Array.from(document.querySelectorAll('#testi-items .adm-testi-item')).indexOf(item);
+    CFG.testimonials.splice(idx,1);
+    item.remove();
+    renumber('testi-items','.adm-testi-item','span:first-child','TESTIMONIO');
+  }
+});
+
+/* ── SYNC TAB HANDLERS (GitHub API) ── */
+const GH_REPO='leoallfit/page3';
+const GH_FILE='config.json';
+const GH_RAW=`https://raw.githubusercontent.com/${GH_REPO}/main/${GH_FILE}`;
+const GH_API=`https://api.github.com/repos/${GH_REPO}/contents/${GH_FILE}`;
+
+function syncSetStatus(msg,ok){
+  const el=document.getElementById('sync-status');
+  if(!el)return;
+  el.style.display='block';
+  el.style.cssText+=`;background:${ok?'#F0FDF4':'#FEF2F2'};color:${ok?'#166534':'#DC2626'};border:1px solid ${ok?'#BBF7D0':'#FECACA'}`;
+  el.textContent=msg;
+}
+
+async function ghGetFileSha(token){
+  const r=await fetch(GH_API,{headers:{'Authorization':`token ${token}`,'Accept':'application/vnd.github.v3+json'}});
+  if(!r.ok) return null;
+  const j=await r.json();
+  return j.sha||null;
+}
+
+document.getElementById('sync-push').addEventListener('click',async()=>{
+  const token=document.getElementById('sync-gh-token').value.trim();
+  if(!token){syncSetStatus('⚠️ Pegá tu GitHub Token primero',false);return;}
+  localStorage.setItem('allfit_gh_token',token);
+  syncSetStatus('Verificando estado en GitHub...',true);
+  try{
+    const sha=await ghGetFileSha(token);
+    if(ghLastKnownSha&&sha&&sha!==ghLastKnownSha){
+      if(!confirm('⚠️ Otro usuario publicó cambios desde tu última sincronización.\n\n¿Querés sobrescribir sus cambios con los tuyos?')) return;
+    }
+    syncSetStatus('Subiendo a GitHub...',true);
+    const body={message:'Actualizar config desde admin panel',content:btoa(unescape(encodeURIComponent(JSON.stringify(CFG,null,2))))};
+    if(sha) body.sha=sha;
+    const r=await fetch(GH_API,{method:'PUT',headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},body:JSON.stringify(body)});
+    if(!r.ok){const e=await r.json();throw new Error(e.message||r.status);}
+    const result=await r.json();
+    const newSha=result.content?.sha;
+    if(newSha){ ghLastKnownSha=newSha; localStorage.setItem('allfit_gh_sha',newSha); }
+    syncSetStatus('✅ Cambios publicados. En 1-2 min se ven en todos los dispositivos.',true);
+    document.getElementById('sync-info').textContent='✅ Conectado a GitHub · leoallfit/page3';
+    admToast('☁️ Config publicada en GitHub');
+    saveCfg(CFG);
+  }catch(e){
+    syncSetStatus(`❌ Error: ${e.message}`,false);
+    admToast('Error al publicar','err');
+  }
+});
+
+document.getElementById('sync-pull').addEventListener('click',async()=>{
+  syncSetStatus('Descargando config desde GitHub...',true);
+  try{
+    const r=await fetch(GH_RAW+'?t='+Date.now());
+    if(!r.ok) throw new Error('No se encontró config.json');
+    const j=await r.json();
+    CFG=deepMerge(DEFAULT,j);
+    saveCfg(CFG);renderAll();populateAdmin();
+    const token=document.getElementById('sync-gh-token').value.trim();
+    const apiR=await fetch(GH_API,{headers:token?{'Authorization':`token ${token}`}:{}});
+    if(apiR.ok){ const apiJ=await apiR.json(); if(apiJ.sha){ ghLastKnownSha=apiJ.sha; localStorage.setItem('allfit_gh_sha',apiJ.sha); } }
+    syncSetStatus('✅ Config descargada y aplicada.',true);
+    admToast('✅ Config cargada desde GitHub');
+  }catch(e){
+    syncSetStatus(`❌ ${e.message}`,false);
+  }
+});
+
+/* ── PASSWORD CHANGE ── */
+document.getElementById('pass-change-btn').addEventListener('click',async()=>{
+  const cur=document.getElementById('pass-cur').value;
+  const nw=document.getElementById('pass-new').value;
+  const cf=document.getElementById('pass-conf').value;
+  const msg=document.getElementById('pass-msg');
+  const showMsg=(text,ok)=>{
+    msg.textContent=text; msg.style.display='block';
+    msg.style.cssText+=`;background:${ok?'#F0FDF4':'#FEF2F2'};color:${ok?'#166534':'#DC2626'};border:1px solid ${ok?'#BBF7D0':'#FECACA'}`;
+  };
+  const curHash=await sha256(cur);
+  const stored=await getAdminHash();
+  if(curHash!==stored){ showMsg('❌ La contraseña actual es incorrecta.',false); return; }
+  if(nw.length<6){ showMsg('❌ La nueva contraseña debe tener al menos 6 caracteres.',false); return; }
+  if(nw!==cf){ showMsg('❌ Las contraseñas no coinciden.',false); return; }
+  const newHash=await sha256(nw);
+  CFG._meta=CFG._meta||{};
+  CFG._meta.adminHash=newHash;
+  localStorage.setItem(ADM_HASH_KEY,newHash);
+  saveCfg(CFG);
+  document.getElementById('pass-cur').value='';
+  document.getElementById('pass-new').value='';
+  document.getElementById('pass-conf').value='';
+  showMsg('✅ Contraseña cambiada. Publicá los cambios en GitHub para que otros admins la actualicen.',true);
+});
+
+/* ── BOOT: carga config desde GitHub solo si hay cambios nuevos (SHA diferente) ── */
+(async()=>{
+  try{
+    const [rawR,apiR]=await Promise.all([fetch(GH_RAW+'?t='+Date.now()),fetch(GH_API)]);
+    let ghChanged=true;
+    if(apiR.ok){
+      const apiJ=await apiR.json();
+      const remoteSha=apiJ.sha;
+      if(remoteSha){
+        const localSha=localStorage.getItem('allfit_gh_sha');
+        ghChanged=remoteSha!==localSha;
+        if(ghChanged){ ghLastKnownSha=remoteSha; localStorage.setItem('allfit_gh_sha',remoteSha); }
+      }
+    }
+    if(ghChanged&&rawR.ok){
+      const j=await rawR.json();
+      if(j&&Object.keys(j).length>0){ CFG=deepMerge(DEFAULT,j); saveCfg(CFG); }
+    }
+  }catch(e){}
+  renderAll();
+})();
+</script>
+</body>
+</html>
