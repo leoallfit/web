@@ -1004,8 +1004,9 @@ document.getElementById('leadForm').addEventListener('submit',async(e)=>{
   try{
     const fid=CFG.form.formspree;
     if(fid&&fid.length>4){
+      const fd=new FormData(); Object.keys(payload).forEach(k=>fd.append(k,payload[k]));
       const res=await fetch(`https://formspree.io/f/${fid}`,{
-        method:'POST', headers:{'Accept':'application/json','Content-Type':'application/json'}, body:JSON.stringify(payload)
+        method:'POST', headers:{'Accept':'application/json'}, body:fd
       });
       if(!res.ok) throw new Error('Error al enviar');
     } else {
