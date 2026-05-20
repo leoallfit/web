@@ -1221,13 +1221,22 @@ function updateColorPreview(){
   document.getElementById('prev-purp').style.background=c.purple||'#8B5CF6';
 }
 
+/* ── DELTA: solo las secciones modificadas respecto al DEFAULT ── */
+function buildDelta(){
+  const delta={};
+  for(const k of Object.keys(DEFAULT)){
+    if(JSON.stringify(CFG[k])!==JSON.stringify(DEFAULT[k])) delta[k]=CFG[k];
+  }
+  return Object.keys(delta).length ? delta : CFG;
+}
+
 /* ── AUTO-PUBLISH: si el token está guardado, publica automáticamente en GitHub ── */
 async function autoPublish(){
   const token=localStorage.getItem('allfit_gh_token');
   if(!token){ admToast('⚠️ Guardado localmente. Configurá el token GitHub en "Sincronización" para publicar a todos.','warn'); return; }
   try{
     const sha=await ghGetFileSha(token);
-    const body={message:'Actualizar config desde admin panel',content:btoa(unescape(encodeURIComponent(JSON.stringify(CFG,null,2))))};
+    const body={message:'Actualizar config desde admin panel',content:btoa(unescape(encodeURIComponent(JSON.stringify(buildDelta(),null,2))))};
     if(sha) body.sha=sha;
     const r=await fetch(GH_API,{method:'PUT',headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},body:JSON.stringify(body)});
     if(r.ok){
@@ -1761,7 +1770,7 @@ document.getElementById('sync-push').addEventListener('click',async()=>{
       if(!confirm('⚠️ Otro usuario publicó cambios desde tu última sincronización.\n\n¿Querés sobrescribir sus cambios con los tuyos?')) return;
     }
     syncSetStatus('Subiendo a GitHub...',true);
-    const body={message:'Actualizar config desde admin panel',content:btoa(unescape(encodeURIComponent(JSON.stringify(CFG,null,2))))};
+    const body={message:'Actualizar config desde admin panel',content:btoa(unescape(encodeURIComponent(JSON.stringify(buildDelta(),null,2))))};
     if(sha) body.sha=sha;
     const r=await fetch(GH_API,{method:'PUT',headers:{'Authorization':`token ${token}`,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},body:JSON.stringify(body)});
     if(!r.ok){const e=await r.json();throw new Error(e.message||r.status);}
@@ -1826,7 +1835,7 @@ document.getElementById('pass-change-btn').addEventListener('click',async()=>{
 (async()=>{
   try{
     const [rawR,apiR]=await Promise.all([fetch(GH_RAW+'?t='+Date.now()),fetch(GH_API)]);
-    let ghChanged=true;
+    let ghChanged=false;
     if(apiR.ok){
       const apiJ=await apiR.json();
       const remoteSha=apiJ.sha;
