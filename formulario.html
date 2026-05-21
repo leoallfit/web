@@ -113,7 +113,7 @@ const DEFAULT_FIELDS = [
   {id:'whatsapp',        label:'WhatsApp',                    type:'tel',     required:true,  errMsg:'Ingresá tu WhatsApp',       half:true},
   {id:'instagram',       label:'Instagram',                   type:'text',    required:false, errMsg:'',                          half:true},
   {id:'edad',            label:'Edad',                        type:'number',  required:true,  errMsg:'Ingresá tu edad',           half:true},
-  {id:'ubicacion',       label:'Ubicación',                   type:'text',    required:false, errMsg:'',                          half:true},
+  {id:'ubicacion',       label:'Ubicación',                   type:'text',    required:false, errMsg:'',                          half:true, placeholder:'Ciudad'},
   {id:'peso',            label:'Peso actual (kg)',            type:'number',  required:true,  errMsg:'Ingresá tu peso',           half:true},
   {id:'altura',          label:'Altura (cm)',                 type:'number',  required:false, errMsg:'',                          half:true},
   {id:'lesiones',        label:'Lesiones o limitaciones',     type:'textarea',required:false, errMsg:'',                          half:false},
@@ -148,7 +148,7 @@ function renderFields(fields, btn){
     } else if(f.type === 'textarea'){
       inp = `<textarea name="${esc(f.id)}" id="ff-${esc(f.id)}" class="form-input"></textarea>`;
     } else {
-      inp = `<input type="${esc(f.type||'text')}" name="${esc(f.id)}" id="ff-${esc(f.id)}" class="form-input"/>`;
+      inp = `<input type="${esc(f.type||'text')}" name="${esc(f.id)}" id="ff-${esc(f.id)}" class="form-input"${f.placeholder?' placeholder="'+esc(f.placeholder)+'"':''}/>`;
     }
     return `<div class="form-group${half?'':' full'}">
       <label for="ff-${esc(f.id)}">${esc(f.label)}${f.required?'<span class="req"> *</span>':''}</label>
