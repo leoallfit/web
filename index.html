@@ -652,7 +652,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
     </div>
     <!-- Preview card -->
     <div class="form-preview">
-      <div class="form-preview-meta">📋 10 preguntas · Tu plan en menos de 24 hs</div>
+      <div class="form-preview-meta" id="form-preview-meta">📋 Cargando...</div>
       <div class="form-group">
         <label for="prev-nombre">¿Cómo te llamás?</label>
         <input type="text" id="prev-nombre" class="form-input" placeholder="Tu nombre completo..."/>
@@ -1889,6 +1889,17 @@ document.getElementById('pass-change-btn').addEventListener('click',async()=>{
   }catch(e){}
   renderAll();
 })();
+
+/* ── Auto-count questions from formulario.html ── */
+fetch('formulario.html').then(r=>r.text()).then(html=>{
+  const doc=new DOMParser().parseFromString(html,'text/html');
+  const count=doc.querySelectorAll('.form-group').length;
+  const el=document.getElementById('form-preview-meta');
+  if(el) el.textContent='📋 '+count+' preguntas';
+}).catch(()=>{
+  const el=document.getElementById('form-preview-meta');
+  if(el) el.textContent='📋 Formulario completo';
+});
 
 /* ── Preview form: pass nombre to formulario.html ── */
 document.getElementById('preview-cta').addEventListener('click',function(e){
