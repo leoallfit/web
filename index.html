@@ -94,7 +94,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 .form-section::after{content:'';position:absolute;bottom:-200px;left:-200px;width:500px;height:500px;background:radial-gradient(circle,rgba(139,92,246,.1) 0%,transparent 70%);pointer-events:none}
 .form-section .container{position:relative;z-index:1}
 .form-header{text-align:center;margin-bottom:48px}
-.form-header .section-label{color:#60A5FA;font-style:italic}
+.form-header .section-label{display:inline-block;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.3);color:#93C5FD;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 16px;border-radius:100px;font-style:italic;margin-bottom:20px}
 .form-header .section-title{color:#fff}
 .form-header .section-sub{color:#94A3B8}
 .form-card{background:#fff;border-radius:24px;padding:48px;max-width:720px;margin:0 auto;box-shadow:0 24px 80px rgba(0,0,0,.4)}
@@ -652,7 +652,6 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
     </div>
     <!-- Preview card -->
     <div class="form-preview">
-      <div class="form-preview-meta" id="form-preview-meta">📋 Cargando...</div>
       <div class="form-group">
         <label for="prev-nombre">¿Cómo te llamás?</label>
         <input type="text" id="prev-nombre" class="form-input" placeholder="Tu nombre completo..."/>
@@ -1889,17 +1888,6 @@ document.getElementById('pass-change-btn').addEventListener('click',async()=>{
   }catch(e){}
   renderAll();
 })();
-
-/* ── Auto-count questions from formulario.html ── */
-fetch('formulario.html').then(r=>r.text()).then(html=>{
-  const doc=new DOMParser().parseFromString(html,'text/html');
-  const count=doc.querySelectorAll('.form-group').length;
-  const el=document.getElementById('form-preview-meta');
-  if(el) el.textContent='📋 '+count+' preguntas';
-}).catch(()=>{
-  const el=document.getElementById('form-preview-meta');
-  if(el) el.textContent='📋 Formulario completo';
-});
 
 /* ── Preview form: pass nombre to formulario.html ── */
 document.getElementById('preview-cta').addEventListener('click',function(e){
