@@ -24,32 +24,34 @@
     .page-hero p{font-size:15px;color:#94A3B8;max-width:440px;margin:0 auto}
 
     .form-wrap{max-width:680px;margin:0 auto;padding:0 24px 80px}
-    .form-card{background:#fff;border-radius:20px;padding:40px;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+    .form-card{background:#1E293B;border-radius:20px;padding:40px;box-shadow:0 24px 80px rgba(0,0,0,.5);border:1px solid #334155}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
     .form-group{display:flex;flex-direction:column;gap:6px}
     .form-group.full{grid-column:1/-1}
-    .form-group label{font-size:13px;font-weight:600;color:#374151}
-    .req{color:#EF4444;margin-left:2px}
-    .form-input{padding:12px 16px;border-radius:10px;border:1.5px solid #D1D5DB;font-size:14px;font-family:inherit;color:#0F172A;background:#F3F4F6;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
-    .form-input:focus{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.1);background:#fff}
+    .form-group label{font-size:13px;font-weight:600;color:#94A3B8}
+    .req{color:#60A5FA;margin-left:2px}
+    .form-input{padding:12px 16px;border-radius:10px;border:1.5px solid #334155;font-size:14px;font-family:inherit;color:#F1F5F9;background:#0F172A;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
+    .form-input:focus{border-color:#2563EB;box-shadow:0 0 0 3px rgba(37,99,235,.15);background:#0F172A}
+    .form-input:-webkit-autofill,.form-input:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 1000px #0F172A inset;-webkit-text-fill-color:#F1F5F9}
     .form-input.error{border-color:#EF4444}
+    select.form-input option{background:#1E293B;color:#F1F5F9}
     textarea.form-input{resize:vertical;min-height:90px}
-    .field-error{font-size:12px;color:#EF4444;display:none;margin-top:2px}
+    .field-error{font-size:12px;color:#F87171;display:none;margin-top:2px}
     .field-error.show{display:block}
 
     .submit-wrap{grid-column:1/-1;margin-top:8px}
-    .submit-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px 32px;background:#1F2937;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:12px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s;letter-spacing:.04em}
-    .submit-btn:hover{background:#2563EB;transform:translateY(-1px)}
+    .submit-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px 32px;background:#2563EB;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:12px;cursor:pointer;font-family:inherit;transition:background .2s,transform .2s;letter-spacing:.04em;box-shadow:0 4px 24px rgba(37,99,235,.4)}
+    .submit-btn:hover{background:#1D4ED8;transform:translateY(-1px)}
     .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
-    .form-note{font-size:12px;color:#9CA3AF;text-align:center;margin-top:14px}
+    .form-note{font-size:12px;color:#475569;text-align:center;margin-top:14px}
 
     .form-success{display:none;text-align:center;padding:48px 24px}
     .form-success.show{display:block}
-    .success-icon{width:72px;height:72px;background:#ECFDF5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+    .success-icon{width:72px;height:72px;background:rgba(16,185,129,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;border:1px solid rgba(16,185,129,.3)}
     .success-icon svg{width:36px;height:36px}
-    .form-success h3{font-size:24px;font-weight:800;color:#111827;margin-bottom:12px}
-    .form-success p{font-size:15px;color:#6B7280;max-width:400px;margin:0 auto 28px}
-    .back-btn{display:inline-flex;align-items:center;gap:8px;color:#2563EB;font-size:14px;font-weight:600}
+    .form-success h3{font-size:24px;font-weight:800;color:#F1F5F9;margin-bottom:12px}
+    .form-success p{font-size:15px;color:#94A3B8;max-width:400px;margin:0 auto 28px}
+    .back-btn{display:inline-flex;align-items:center;gap:8px;color:#60A5FA;font-size:14px;font-weight:600}
 
     .footer-simple{border-top:1px solid #1E293B;padding:24px;text-align:center;font-size:12px;color:#475569}
     .footer-simple a{color:#60A5FA}
