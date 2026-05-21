@@ -676,7 +676,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
         <div class="social-links" id="social-links"></div>
       </div>
       <div class="footer-col"><h4>Programa</h4><ul><li><a href="#pilares">Entrenamientos</a></li><li><a href="#pilares">Nutrición</a></li><li><a href="#pilares">Comunidad</a></li><li><a href="#formulario">Empezar</a></li></ul></div>
-      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li><li><a href="#" id="foot-email-link">Contacto</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="privacidad.html">Privacidad</a></li><li><a href="terminos.html">Términos</a></li><li><a href="#" id="foot-email-link">Contacto</a></li></ul></div>
     </div>
     <div class="footer-bottom"><p id="foot-copy">© 2026 ALLFIT. Todos los derechos reservados.</p></div>
   </div>
@@ -727,7 +727,7 @@ const DEFAULT = {
     {avatar:'🔥',avatarUrl:'',name:'Lucas M.',age:35,result:'+8 kg de masa en 3 meses',text:'A los 35 pensé que ya era tarde. Leo me demostró que no. En 90 días conseguí más músculo que en los 3 años anteriores entrenando solo.',rating:5,beforeUrl:'',afterUrl:''}
   ],
   cta:{ title:'¿Listo para que esto cambie?', sub:'Completá el formulario y en menos de 24 hs te escribo con tu plan.', btn:'QUIERO MI PLAN AHORA' },
-  social:{ ig:'#', yt:'#', li:'#', wa:'', email:'allfit.asesorias@gmail.com' },
+  social:{ ig:'https://www.instagram.com/leo.allfit', yt:'', li:'', wa:'', email:'allfit.asesorias@gmail.com' },
   footer:{ tagline:'Entrenamiento personalizado para hombres mayores de 25 que quieren masa muscular real.', copy:'© 2026 ALLFIT · Leo Massud. Todos los derechos reservados.' },
   form:{ title:'Hablemos de tu caso', sub:'Completá el formulario y en menos de 24 hs te contacto con tu plan personalizado.', btn:'QUIERO MI PLAN CON LEO', okTitle:'¡Listo, te escribo pronto!', okMsg:'Revisé tus datos y en menos de 24 hs te mando tu plan personalizado. Mientras tanto, seguime en Instagram @leo.allfit 💪', formspree:'mbdbgaap',
     fields:[
@@ -848,12 +848,10 @@ function renderCta(c){
 
 function renderSocial(s){
   const links=[
-    {k:'ig',l:'Instagram',icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`},
-    {k:'yt',l:'YouTube',icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>`},
-    {k:'li',l:'LinkedIn',icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>`}
+    {k:'ig',l:'Instagram',icon:`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>`}
   ];
-  document.getElementById('social-links').innerHTML=links.map(l=>
-    `<a href="${esc(s[l.k]||'#')}" class="social-link" aria-label="${l.l}" target="_blank" rel="noopener">${l.icon}</a>`
+  document.getElementById('social-links').innerHTML=links.filter(l=>s[l.k]&&s[l.k]!=='#').map(l=>
+    `<a href="${esc(s[l.k])}" class="social-link" aria-label="${l.l}" target="_blank" rel="noopener">${l.icon}</a>`
   ).join('');
   const emailEl=document.getElementById('foot-email-link');
   if(emailEl&&s.email){ emailEl.href=`mailto:${s.email}`; emailEl.textContent=s.email; }
