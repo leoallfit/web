@@ -244,11 +244,15 @@ document.getElementById('consultaForm').addEventListener('submit', async functio
     const res = await fetch('https://formspree.io/f/' + currentFspree, {
       method:'POST', headers:{'Accept':'application/json'}, body:fd
     });
-    if(!res.ok) throw new Error('Error');
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok || data.ok===false){
+      const msg = (data.errors && data.errors[0] && data.errors[0].message) || data.error || ('HTTP '+res.status);
+      throw new Error(msg);
+    }
     this.style.display = 'none';
     document.getElementById('formSuccess').classList.add('show');
   }catch(err){
-    btnText.textContent = 'Error al enviar. Intentá de nuevo.';
+    btnText.textContent = '⚠️ ' + err.message;
     btn.disabled = false;
   }
 });
