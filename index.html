@@ -625,7 +625,7 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
       <p class="section-sub" id="form-sub">Completá el formulario y recibirás tu plan personalizado en menos de 24 horas.</p>
     </div>
     <div class="form-card">
-      <form id="leadForm" novalidate>
+      <form id="leadForm" novalidate action="https://formspree.io/f/mbdbgaap" method="POST">
         <div class="form-grid" id="form-fields-container"></div>
       </form>
       <div class="form-success" id="formSuccess">
@@ -1002,16 +1002,12 @@ document.getElementById('leadForm').addEventListener('submit',async(e)=>{
   btn.disabled=true; txt.textContent='Enviando...'; arr.style.display='none'; spn.style.display='block';
 
   try{
-    const fid=CFG.form.formspree;
-    if(fid&&fid.length>4){
-      const fd=new FormData(); Object.keys(payload).forEach(k=>fd.append(k,payload[k]));
-      const res=await fetch(`https://formspree.io/f/${fid}`,{
-        method:'POST', headers:{'Accept':'application/json'}, body:fd
-      });
-      if(!res.ok) throw new Error('Error al enviar');
-    } else {
-      await new Promise(r=>setTimeout(r,900));
-    }
+    const fid=CFG.form.formspree||'mbdbgaap';
+    const fd=new FormData(); Object.keys(payload).forEach(k=>fd.append(k,payload[k]));
+    const res=await fetch(`https://formspree.io/f/${fid}`,{
+      method:'POST', headers:{'Accept':'application/json'}, body:fd
+    });
+    if(!res.ok) throw new Error('Error al enviar');
     get('leadForm').style.display='none';
     get('formSuccess').classList.add('show');
     get('formSuccess').scrollIntoView({behavior:'smooth',block:'center'});
