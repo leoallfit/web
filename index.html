@@ -747,16 +747,22 @@ const DEFAULT = {
   footer:{ tagline:'Entrenamiento personalizado para hombres mayores de 25 que quieren masa muscular real.', copy:'© 2026 ALLFIT · Leo. Todos los derechos reservados.' },
   form:{ title:'Hablemos de tu caso', sub:'Completá el formulario y en menos de 24 hs te contacto con tu plan personalizado.', btn:'QUIERO MI PLAN CON LEO', okTitle:'¡Listo, te escribo pronto!', okMsg:'Revisé tus datos y en menos de 24 hs te mando tu plan personalizado. Mientras tanto, seguime en Instagram @leo.allfit 💪', formspree:'mbdbgaap',
     fields:[
-      {id:'nombre', label:'Nombre completo', type:'text', required:true, errMsg:'Ingresá tu nombre', half:true},
-      {id:'email',  label:'Email',           type:'email',required:true, errMsg:'Email inválido',    half:true},
-      {id:'edad',   label:'Edad',            type:'number',required:true,errMsg:'Mínimo 25 años',    half:true},
-      {id:'peso',   label:'Peso (kg)',       type:'number',required:true,errMsg:'Ingresá tu peso',   half:true},
-      {id:'experiencia',label:'Experiencia', type:'select',required:true,errMsg:'Seleccioná una opción', half:true,
-        options:'Principiante (menos de 1 año)|Intermedio (1-3 años)|Avanzado (más de 3 años)'},
-      {id:'objetivo',label:'Objetivo',       type:'select',required:true,errMsg:'Seleccioná una opción', half:true,
-        options:'Ganar masa muscular|Perder grasa y mantener músculo|Fuerza pura'},
-      {id:'telefono',label:'WhatsApp',       type:'tel',  required:true, errMsg:'Ingresá tu WhatsApp',  half:true},
-      {id:'instagram',label:'Instagram',     type:'text', required:true, errMsg:'Ingresá tu Instagram', half:true}
+      {id:'nombre',          label:'Nombre completo',            type:'text',    required:true,  errMsg:'Ingresá tu nombre',         half:true},
+      {id:'email',           label:'Email',                      type:'email',   required:true,  errMsg:'Email inválido',             half:true},
+      {id:'whatsapp',        label:'WhatsApp',                   type:'tel',     required:true,  errMsg:'Ingresá tu WhatsApp',        half:true},
+      {id:'instagram',       label:'Instagram',                  type:'text',    required:false, errMsg:'',                           half:true},
+      {id:'edad',            label:'Edad',                       type:'number',  required:true,  errMsg:'Ingresá tu edad',            half:true},
+      {id:'ubicacion',       label:'Ubicación',                  type:'text',    required:false, errMsg:'',                           half:true},
+      {id:'peso',            label:'Peso actual (kg)',           type:'number',  required:true,  errMsg:'Ingresá tu peso',            half:true},
+      {id:'altura',          label:'Altura (cm)',                type:'number',  required:false, errMsg:'',                           half:true},
+      {id:'lesiones',        label:'Lesiones o limitaciones',    type:'textarea',required:false, errMsg:'',                           half:false},
+      {id:'experiencia',     label:'Nivel de experiencia',       type:'select',  required:true,  errMsg:'Seleccioná una opción',      half:true, options:'Principiante (menos de 1 año)|Intermedio (1-3 años)|Avanzado (más de 3 años)'},
+      {id:'dias',            label:'Días disponibles por semana',type:'select',  required:true,  errMsg:'Seleccioná una opción',      half:true, options:'2-3 días|4-5 días|6-7 días'},
+      {id:'horario',         label:'Horario preferido',          type:'select',  required:false, errMsg:'',                           half:true, options:'Mañana (antes de las 12)|Tarde (12 a 18 hs)|Noche (después de las 18)'},
+      {id:'equipamiento',    label:'Equipamiento disponible',    type:'select',  required:true,  errMsg:'Seleccioná una opción',      half:true, options:'Gimnasio completo|Gimnasio básico|Entrenamiento en casa con equipamiento|Sin equipamiento (solo peso corporal)'},
+      {id:'objetivo',        label:'Objetivo principal',         type:'select',  required:true,  errMsg:'Seleccioná una opción',      half:false,options:'Ganar masa muscular|Perder grasa y mantener músculo|Fuerza pura|Mejorar composición corporal general'},
+      {id:'motivacion',      label:'¿Por qué ahora? ¿Qué te motivó?', type:'textarea',required:false,errMsg:'',                      half:false},
+      {id:'como_encontraste',label:'¿Cómo nos encontraste?',    type:'select',  required:false, errMsg:'',                           half:true, options:'Instagram|Recomendación de un amigo|Google|Otro'}
     ]
   }
 };
