@@ -98,6 +98,15 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
 .form-header .section-title{color:#fff}
 .form-header .section-sub{color:#94A3B8}
 .form-card{background:#fff;border-radius:24px;padding:48px;max-width:720px;margin:0 auto;box-shadow:0 24px 80px rgba(0,0,0,.4)}
+.form-preview{max-width:560px;margin:0 auto;text-align:left}
+.form-preview-meta{display:inline-flex;align-items:center;gap:8px;background:rgba(96,165,250,.12);border:1px solid rgba(96,165,250,.25);color:#93C5FD;font-size:12px;font-weight:600;padding:7px 16px;border-radius:100px;margin-bottom:28px}
+.form-preview .form-group label{font-size:14px;font-weight:600;color:#F1F5F9;margin-bottom:8px;display:block}
+.form-preview .form-input{width:100%;padding:14px 18px;border-radius:12px;border:1.5px solid #334155;background:#1E293B;color:#F1F5F9;font-size:15px;font-family:inherit;outline:none;transition:border-color .2s}
+.form-preview .form-input::placeholder{color:#64748B}
+.form-preview .form-input:focus{border-color:#2563EB}
+.form-preview-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:20px;padding:17px 32px;background:#2563EB;color:#fff;font-size:15px;font-weight:700;border:none;border-radius:12px;cursor:pointer;font-family:inherit;text-decoration:none;transition:background .2s,transform .2s;box-shadow:0 4px 24px rgba(37,99,235,.4);letter-spacing:.03em}
+.form-preview-cta:hover{background:#1D4ED8;transform:translateY(-2px)}
+.form-preview-sub{text-align:center;font-size:12px;color:#475569;margin-top:14px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .form-group{display:flex;flex-direction:column;gap:6px}
 .form-group.full{grid-column:1/-1}
@@ -640,16 +649,22 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
       <h2 class="section-title" id="form-title">Comenzá tu transformación hoy</h2>
       <p class="section-sub" id="form-sub">Completá el formulario y recibirás tu plan personalizado en menos de 24 horas.</p>
     </div>
-    <div class="form-card">
-      <form id="leadForm" novalidate action="https://formspree.io/f/mbdbgaap" method="POST">
-        <div class="form-grid" id="form-fields-container"></div>
-      </form>
-      <div class="form-success" id="formSuccess">
-        <div class="success-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div>
-        <h3 id="form-ok-title">¡Gracias por registrarte!</h3>
-        <p id="form-ok-msg">En menos de 24 horas recibirás tu plan personalizado. ¡Bienvenido a ALLFIT! 💪</p>
+    <!-- Preview card -->
+    <div class="form-preview">
+      <div class="form-preview-meta">📋 10 preguntas · Tu plan en menos de 24 hs</div>
+      <div class="form-group">
+        <label for="prev-nombre">¿Cómo te llamás?</label>
+        <input type="text" id="prev-nombre" class="form-input" placeholder="Tu nombre completo..."/>
       </div>
+      <a href="formulario.html" id="preview-cta" class="form-preview-cta">
+        Completar formulario completo
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:18px;height:18px"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <p class="form-preview-sub">Sin compromiso · Respuesta en menos de 24 hs</p>
     </div>
+    <!-- Oculto para compatibilidad con admin -->
+    <form id="leadForm" style="display:none"><div id="form-fields-container"></div></form>
+    <div id="formSuccess" style="display:none"><h3 id="form-ok-title"></h3><p id="form-ok-msg"></p></div>
   </div>
 </section>
 
@@ -661,10 +676,10 @@ img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-st
   <div class="container">
     <h2 id="cta-title">¿Listo para transformarte?</h2>
     <p id="cta-sub">Más de 5,000 hombres ya dieron el primer paso. Es tu turno.</p>
-    <button class="btn-white" onclick="document.getElementById('formulario').scrollIntoView({behavior:'smooth'})">
+    <a href="formulario.html" class="btn-white" style="text-decoration:none">
       <span id="cta-btn-text">COMPLETÁ EL FORMULARIO AHORA</span>
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </button>
+    </a>
   </div>
 </section>
 
@@ -1873,6 +1888,15 @@ document.getElementById('pass-change-btn').addEventListener('click',async()=>{
   }catch(e){}
   renderAll();
 })();
+
+/* ── Preview form: pass nombre to formulario.html ── */
+document.getElementById('preview-cta').addEventListener('click',function(e){
+  var nombre=(document.getElementById('prev-nombre')||{}).value;
+  if(nombre&&nombre.trim()){
+    e.preventDefault();
+    window.location.href='formulario.html?nombre='+encodeURIComponent(nombre.trim());
+  }
+});
 </script>
 </body>
 </html>
