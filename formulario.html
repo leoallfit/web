@@ -108,6 +108,8 @@
 <script>
 const GH_RAW = 'https://raw.githubusercontent.com/leoallfit/page3/main/config.json';
 const FSPREE_FALLBACK = 'mbdbgaap';
+// ↓ Pegá acá la URL del Web App de Google Apps Script (ver instrucciones en admin)
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbx40rTwSnXSgTq6E0-PFrHCAlOPANbwf6mKG9Ksk1laUPow-g9lIVCkOLI5keziJBGD7w/exec';
 
 const DEFAULT_FIELDS = [
   {id:'nombre',          label:'Nombre completo',             type:'text',    required:true,  errMsg:'Ingresá tu nombre',        half:true},
@@ -260,6 +262,18 @@ document.getElementById('consultaForm').addEventListener('submit', async functio
     });
     const data = await res.json().catch(()=>({}));
     if(!res.ok || data.ok === false) throw new Error(data.error || 'HTTP ' + res.status);
+
+    // CRM: enviar a Google Sheets (fire & forget, no bloquea el flujo)
+    if(SHEETS_URL){
+      const sheetsData = Object.assign({ _fecha: new Date().toISOString() }, formData);
+      fetch(SHEETS_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(sheetsData)
+      }).catch(()=>{});
+    }
+
     this.style.display = 'none';
     document.getElementById('formSuccess').classList.add('show');
   }catch(err){
