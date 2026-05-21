@@ -82,9 +82,7 @@
 
 <div class="form-wrap">
   <div class="form-card">
-    <form id="consultaForm" novalidate method="POST" action="https://formspree.io/f/mbdbgaap">
-      <input type="hidden" name="_next" value="https://leoallfit.com.ar/formulario.html?enviado=1"/>
-      <input type="hidden" name="_subject" value="Nueva consulta – ALLFIT"/>
+    <form id="consultaForm" novalidate>
       <div class="form-grid" id="form-fields-container">
         <!-- Campos renderizados dinámicamente -->
       </div>
@@ -226,8 +224,9 @@ if(new URLSearchParams(window.location.search).get('enviado') === '1'){
   window.history.replaceState({}, '', window.location.pathname);
 }
 
-// Submit — solo valida; si todo OK deja que el form envíe nativo a Formspree
-document.getElementById('consultaForm').addEventListener('submit', function(e){
+// Submit — valida y envía con fetch+JSON (igual que leoallfit.github.io/form/)
+document.getElementById('consultaForm').addEventListener('submit', async function(e){
+  e.preventDefault();
   let valid = true;
   currentFields.filter(f => f.required).forEach(f => {
     const el  = document.getElementById('ff-' + f.id);
@@ -240,9 +239,33 @@ document.getElementById('consultaForm').addEventListener('submit', function(e){
     if(err) err.classList.toggle('show', !ok);
     if(!ok) valid = false;
   });
-  if(!valid){ e.preventDefault(); return; }
+  if(!valid) return;
+
+  const btn = document.getElementById('submit-btn');
   document.getElementById('btn-text').textContent = 'Enviando...';
-  document.getElementById('submit-btn').disabled = true;
+  btn.disabled = true;
+
+  // Armar objeto con todos los campos
+  const formData = {};
+  currentFields.forEach(f => {
+    const el = document.getElementById('ff-' + f.id);
+    if(el) formData[f.label || f.id] = el.value;
+  });
+
+  try{
+    const res = await fetch('https://formspree.io/f/maqadbrj', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(formData)
+    });
+    const data = await res.json().catch(()=>({}));
+    if(!res.ok || data.ok === false) throw new Error(data.error || 'HTTP ' + res.status);
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('show');
+  }catch(err){
+    document.getElementById('btn-text').textContent = '⚠️ ' + err.message;
+    btn.disabled = false;
+  }
 });
 </script>
 </body>
