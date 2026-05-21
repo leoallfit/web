@@ -82,7 +82,9 @@
 
 <div class="form-wrap">
   <div class="form-card">
-    <form id="consultaForm" novalidate>
+    <form id="consultaForm" novalidate method="POST">
+      <input type="hidden" name="_next" id="hidden-next"/>
+      <input type="hidden" name="_subject" value="Nueva consulta – ALLFIT"/>
       <div class="form-grid" id="form-fields-container">
         <!-- Campos renderizados dinámicamente -->
       </div>
@@ -217,8 +219,15 @@ renderFields(currentFields, currentBtn);
 prefillNombre();
 loadFromGitHub();
 
-// Submit
-document.getElementById('consultaForm').addEventListener('submit', async function(e){
+// Si viene de un envío exitoso, mostrar success
+if(new URLSearchParams(window.location.search).get('enviado') === '1'){
+  document.getElementById('consultaForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('show');
+  window.history.replaceState({}, '', window.location.pathname);
+}
+
+// Submit — valida y envía nativo (sin fetch, sin CORS)
+document.getElementById('consultaForm').addEventListener('submit', function(e){
   e.preventDefault();
   let valid = true;
   currentFields.filter(f => f.required).forEach(f => {
@@ -234,27 +243,14 @@ document.getElementById('consultaForm').addEventListener('submit', async functio
   });
   if(!valid) return;
 
-  const btn = document.getElementById('submit-btn');
-  const btnText = document.getElementById('btn-text');
-  btn.disabled = true;
-  btnText.textContent = 'Enviando...';
+  // Setear action y redirect antes de enviar
+  this.action = 'https://formspree.io/f/' + currentFspree;
+  document.getElementById('hidden-next').value = window.location.origin + '/formulario.html?enviado=1';
 
-  try{
-    const fd = new FormData(this);
-    const res = await fetch('https://formspree.io/f/' + currentFspree, {
-      method:'POST', headers:{'Accept':'application/json'}, body:fd
-    });
-    const data = await res.json().catch(()=>({}));
-    if(!res.ok || data.ok===false){
-      const msg = (data.errors && data.errors[0] && data.errors[0].message) || data.error || ('HTTP '+res.status);
-      throw new Error(msg);
-    }
-    this.style.display = 'none';
-    document.getElementById('formSuccess').classList.add('show');
-  }catch(err){
-    btnText.textContent = '⚠️ ' + err.message;
-    btn.disabled = false;
-  }
+  const btn = document.getElementById('submit-btn');
+  document.getElementById('btn-text').textContent = 'Enviando...';
+  btn.disabled = true;
+  this.submit();
 });
 </script>
 </body>
