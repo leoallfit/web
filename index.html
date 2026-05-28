@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://api.github.com https://raw.githubusercontent.com https://script.google.com; frame-ancestors 'none'"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
   <title id="page-title">ALLFIT – Aumentá tu masa muscular en 90 días</title>
   <meta id="page-desc" name="description" content="" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
@@ -1965,6 +1968,21 @@ document.querySelectorAll('img').forEach(img => {
   img.setAttribute('draggable','false');
   img.addEventListener('dragstart', e => e.preventDefault());
 });
+
+// 5. Bloquear si se abre en iframe (clickjacking)
+if(window.self !== window.top){ window.top.location = window.self.location; }
+
+// 6. Detección de DevTools por diferencia de tamaño de ventana
+(function detectDevTools(){
+  const threshold = 160;
+  function check(){
+    if(window.outerWidth - window.innerWidth > threshold ||
+       window.outerHeight - window.innerHeight > threshold){
+      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;font-size:18px;color:#374151">🔒 Acceso no permitido</div>';
+    }
+  }
+  setInterval(check, 1000);
+})();
 </script>
 </body>
 </html>

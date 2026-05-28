@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://api.github.com https://raw.githubusercontent.com https://script.google.com; frame-ancestors 'none'"/>
+  <meta name="referrer" content="strict-origin-when-cross-origin"/>
+  <meta http-equiv="X-Content-Type-Options" content="nosniff"/>
   <title>Formulario de Consulta – ALLFIT</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -231,6 +234,7 @@ if(new URLSearchParams(window.location.search).get('enviado') === '1'){
 }
 
 // Protección de contenido
+if(window.self !== window.top){ window.top.location = window.self.location; }
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('keydown', e => {
   const ctrl = e.ctrlKey || e.metaKey;
@@ -238,6 +242,15 @@ document.addEventListener('keydown', e => {
   if(ctrl && e.shiftKey && ['i','j','c','k'].includes(e.key.toLowerCase())) { e.preventDefault(); return; }
   if(e.key === 'F12') e.preventDefault();
 });
+(function detectDevTools(){
+  const threshold = 160;
+  setInterval(function(){
+    if(window.outerWidth - window.innerWidth > threshold ||
+       window.outerHeight - window.innerHeight > threshold){
+      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;font-size:18px;color:#F1F5F9;background:#0F172A">🔒 Acceso no permitido</div>';
+    }
+  }, 1000);
+})();
 
 const _formLoadTime = Date.now();
 
