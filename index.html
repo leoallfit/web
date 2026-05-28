@@ -12,8 +12,9 @@
 /* ══ RESET ══ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:#111827;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}a{text-decoration:none;color:inherit}ul{list-style:none}
+body{font-family:'Inter',sans-serif;color:#111827;background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none}
+img{max-width:100%;display:block;-webkit-user-drag:none;user-drag:none;pointer-events:none}
+input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:text}a{text-decoration:none;color:inherit}ul{list-style:none}
 /* ══ CSS VARS ══ */
 :root{
   --c-primary:#1F2937;--c-accent:#2563EB;--c-green:#10B981;--c-purple:#8B5CF6;
@@ -1119,24 +1120,57 @@ function showAdmBody(){
   populateAdmin();
 }
 
-/* login */
+/* login – con rate limiting */
+let _loginAttempts = parseInt(sessionStorage.getItem('adm_att')||'0');
+let _lockUntil     = parseInt(sessionStorage.getItem('adm_lock')||'0');
+
 document.getElementById('adm-login-btn').addEventListener('click',doLogin);
 document.getElementById('adm-pass').addEventListener('keydown',e=>{ if(e.key==='Enter') doLogin(); });
 async function doLogin(){
-  const pass=document.getElementById('adm-pass').value;
-  const errEl=document.getElementById('adm-login-err');
-  const hash=await sha256(pass);
-  const stored=await getAdminHash();
-  if(hash===stored){
-    errEl.style.display='none';
+  const errEl = document.getElementById('adm-login-err');
+  // Verificar bloqueo activo
+  if(Date.now() < _lockUntil){
+    const secs = Math.ceil((_lockUntil - Date.now()) / 1000);
+    errEl.textContent = `Demasiados intentos. Esperá ${secs}s`;
+    errEl.style.display = 'block'; return;
+  }
+  const pass = document.getElementById('adm-pass').value;
+  const hash   = await sha256(pass);
+  const stored = await getAdminHash();
+  if(hash === stored){
+    errEl.style.display = 'none';
+    _loginAttempts = 0;
+    sessionStorage.removeItem('adm_att');
+    sessionStorage.removeItem('adm_lock');
     localStorage.setItem(ADM_KEY,'1');
-    localStorage.setItem(ADM_HASH_KEY,hash);
-    document.getElementById('adm-pass').value='';
+    localStorage.setItem(ADM_HASH_KEY, hash);
+    localStorage.setItem('adm_ts', Date.now()); // timestamp de sesión
+    document.getElementById('adm-pass').value = '';
     showAdmBody();
   } else {
-    errEl.style.display='block';
+    _loginAttempts++;
+    sessionStorage.setItem('adm_att', _loginAttempts);
+    if(_loginAttempts >= 5){
+      _lockUntil = Date.now() + 60000; // bloqueo 60s
+      sessionStorage.setItem('adm_lock', _lockUntil);
+      _loginAttempts = 0;
+      sessionStorage.setItem('adm_att','0');
+      errEl.textContent = 'Demasiados intentos. Esperá 60s';
+    } else {
+      errEl.textContent = `Contraseña incorrecta (${_loginAttempts}/5)`;
+    }
+    errEl.style.display = 'block';
   }
 }
+
+// Timeout de sesión: 8 horas
+(function checkSessionTimeout(){
+  const ts = parseInt(localStorage.getItem('adm_ts')||'0');
+  if(ts && Date.now() - ts > 8 * 3600 * 1000){
+    localStorage.removeItem(ADM_KEY);
+    localStorage.removeItem('adm_ts');
+  }
+})();
 document.getElementById('adm-logout').addEventListener('click',()=>{
   localStorage.removeItem(ADM_KEY); showAdmLogin();
 });
@@ -1902,6 +1936,34 @@ document.getElementById('preview-cta').addEventListener('click',function(e){
     e.preventDefault();
     window.location.href='formulario.html?nombre='+encodeURIComponent(nombre.trim());
   }
+});
+
+/* ══════════════════════════════════════════
+   PROTECCIÓN DE CONTENIDO
+══════════════════════════════════════════ */
+// 1. Bloquear clic derecho
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// 2. Bloquear selección de texto con teclado fuera de inputs
+document.addEventListener('selectstart', e => {
+  if (!e.target.closest('input, textarea, select, [contenteditable]')) e.preventDefault();
+});
+
+// 3. Bloquear atajos de teclado peligrosos
+document.addEventListener('keydown', e => {
+  const ctrl = e.ctrlKey || e.metaKey;
+  // Ctrl+U (ver fuente), Ctrl+S (guardar), Ctrl+P (imprimir)
+  if (ctrl && ['u','s','p'].includes(e.key.toLowerCase())) { e.preventDefault(); return; }
+  // Ctrl+Shift+I / J / C (DevTools), Ctrl+Shift+K (Firefox DevTools)
+  if (ctrl && e.shiftKey && ['i','j','c','k'].includes(e.key.toLowerCase())) { e.preventDefault(); return; }
+  // F12
+  if (e.key === 'F12') { e.preventDefault(); return; }
+});
+
+// 4. Imágenes no arrastrables
+document.querySelectorAll('img').forEach(img => {
+  img.setAttribute('draggable','false');
+  img.addEventListener('dragstart', e => e.preventDefault());
 });
 </script>
 </body>

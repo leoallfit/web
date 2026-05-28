@@ -8,7 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Inter',sans-serif;background:#0F172A;color:#F1F5F9;line-height:1.6;-webkit-font-smoothing:antialiased}
+    body{font-family:'Inter',sans-serif;background:#0F172A;color:#F1F5F9;line-height:1.6;-webkit-font-smoothing:antialiased;-webkit-user-select:none;user-select:none}
+    input,textarea,select{-webkit-user-select:text;user-select:text}
     a{text-decoration:none;color:inherit}
 
     .navbar{background:#1756b8;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.3)}
@@ -84,6 +85,8 @@
 <div class="form-wrap">
   <div class="form-card">
     <form id="consultaForm" novalidate>
+      <!-- Honeypot anti-spam: los bots llenan este campo, los humanos no lo ven -->
+      <input type="text" name="_gotcha" id="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;pointer-events:none"/>
       <div class="form-grid" id="form-fields-container">
         <!-- Campos renderizados dinámicamente -->
       </div>
@@ -227,9 +230,25 @@ if(new URLSearchParams(window.location.search).get('enviado') === '1'){
   window.history.replaceState({}, '', window.location.pathname);
 }
 
+// Protección de contenido
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  const ctrl = e.ctrlKey || e.metaKey;
+  if(ctrl && ['u','s','p'].includes(e.key.toLowerCase())) { e.preventDefault(); return; }
+  if(ctrl && e.shiftKey && ['i','j','c','k'].includes(e.key.toLowerCase())) { e.preventDefault(); return; }
+  if(e.key === 'F12') e.preventDefault();
+});
+
+const _formLoadTime = Date.now();
+
 // Submit — valida y envía con fetch+JSON (igual que leoallfit.github.io/form/)
 document.getElementById('consultaForm').addEventListener('submit', async function(e){
   e.preventDefault();
+
+  // Anti-spam: honeypot relleno = bot
+  if(document.getElementById('_gotcha').value) return;
+  // Anti-spam: enviado en menos de 4 segundos = bot
+  if(Date.now() - _formLoadTime < 4000) return;
   let valid = true;
   currentFields.filter(f => f.required).forEach(f => {
     const el  = document.getElementById('ff-' + f.id);
