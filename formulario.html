@@ -157,9 +157,9 @@ function renderFields(fields, btn){
       const opts = (f.options||'').split('|').filter(Boolean).map(o=>`<option value="${esc(o)}">${esc(o)}</option>`).join('');
       inp = `<select name="${esc(f.id)}" id="ff-${esc(f.id)}" class="form-input"><option value="">Seleccioná...</option>${opts}</select>`;
     } else if(f.type === 'textarea'){
-      inp = `<textarea name="${esc(f.id)}" id="ff-${esc(f.id)}" class="form-input"></textarea>`;
+      inp = `<textarea name="${esc(f.id)}" id="ff-${esc(f.id)}" class="form-input" maxlength="150"></textarea>`;
     } else {
-      inp = `<input type="${esc(f.type||'text')}" name="${esc(f.id)}" id="ff-${esc(f.id)}" class="form-input"${f.placeholder?' placeholder="'+esc(f.placeholder)+'"':''}/>`;
+      inp = `<input type="${esc(f.type||'text')}" name="${esc(f.id)}" id="ff-${esc(f.id)}" class="form-input" maxlength="150"${f.placeholder?' placeholder="'+esc(f.placeholder)+'"':''}/>`;
     }
     return `<div class="form-group${half?'':' full'}">
       <label for="ff-${esc(f.id)}">${esc(f.label)}${f.required?'<span class="req"> *</span>':''}</label>
