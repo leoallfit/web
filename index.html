@@ -984,26 +984,60 @@ document.getElementById('carousel-next').addEventListener('click',()=>{
   marqueeX-=120; // salta hacia adelante
 });
 
-// drag con mouse
+// drag con mouse + inercia
 (()=>{
   let dragging=false, dragStartX=0, dragStartMarquee=0;
+  let lastX=0, lastT=0, velocity=0, mRAF;
+  function applyMomentum(){
+    velocity*=0.92;
+    marqueeX+=velocity;
+    if(Math.abs(velocity)<0.4){ marqueePaused=false; return; }
+    mRAF=requestAnimationFrame(applyMomentum);
+  }
   mOuter.addEventListener('mousedown',e=>{
+    cancelAnimationFrame(mRAF);
     dragging=true; dragStartX=e.clientX; dragStartMarquee=marqueeX;
+    lastX=e.clientX; lastT=Date.now(); velocity=0;
     marqueePaused=true;
   });
   window.addEventListener('mousemove',e=>{
     if(!dragging) return;
+    const now=Date.now(), dt=now-lastT||1;
+    velocity=(e.clientX-lastX)/dt*14;
+    lastX=e.clientX; lastT=now;
     marqueeX=dragStartMarquee+(e.clientX-dragStartX);
   });
-  window.addEventListener('mouseup',()=>{ dragging=false; marqueePaused=false; });
+  window.addEventListener('mouseup',()=>{
+    if(!dragging) return;
+    dragging=false;
+    mRAF=requestAnimationFrame(applyMomentum);
+  });
 })();
 
-// touch
+// touch + inercia
 (()=>{
-  let startX=0, startMq=0;
-  mOuter.addEventListener('touchstart',e=>{ startX=e.touches[0].clientX; startMq=marqueeX; marqueePaused=true; },{passive:true});
-  mOuter.addEventListener('touchmove',e=>{ marqueeX=startMq+(e.touches[0].clientX-startX); },{passive:true});
-  mOuter.addEventListener('touchend',()=>{ marqueePaused=false; },{passive:true});
+  let startX=0, startMq=0, lastX=0, lastT=0, velocity=0, mRAF;
+  function applyMomentum(){
+    velocity*=0.92;
+    marqueeX+=velocity;
+    if(Math.abs(velocity)<0.4){ marqueePaused=false; return; }
+    mRAF=requestAnimationFrame(applyMomentum);
+  }
+  mOuter.addEventListener('touchstart',e=>{
+    cancelAnimationFrame(mRAF);
+    startX=e.touches[0].clientX; startMq=marqueeX;
+    lastX=startX; lastT=Date.now(); velocity=0;
+    marqueePaused=true;
+  },{passive:true});
+  mOuter.addEventListener('touchmove',e=>{
+    const now=Date.now(), dt=now-lastT||1;
+    velocity=(e.touches[0].clientX-lastX)/dt*14;
+    lastX=e.touches[0].clientX; lastT=now;
+    marqueeX=startMq+(e.touches[0].clientX-startX);
+  },{passive:true});
+  mOuter.addEventListener('touchend',()=>{
+    mRAF=requestAnimationFrame(applyMomentum);
+  },{passive:true});
 })();
 
 /* ══ LANDING INTERACTIONS ══ */
