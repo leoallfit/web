@@ -142,9 +142,6 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:tex
 .marquee-outer{overflow-x:scroll;-webkit-overflow-scrolling:touch;position:relative;margin:0 -24px;padding:8px 0 16px;cursor:grab;scrollbar-width:none}
 .marquee-outer::-webkit-scrollbar{display:none}
 .marquee-outer:active{cursor:grabbing}
-.marquee-outer::before,.marquee-outer::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
-.marquee-outer::before{left:0;background:linear-gradient(to right,#0F172A,transparent)}
-.marquee-outer::after{right:0;background:linear-gradient(to left,#0F172A,transparent)}
 .testimonials-grid{display:flex;gap:20px;padding:0 24px;width:max-content}
 .testimonial-card{background:#F8FAFF;border:1px solid #E5E7EB;border-radius:20px;padding:28px;text-align:left;width:340px;flex-shrink:0;transition:box-shadow .2s,transform .2s}
 .testimonial-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.1);transform:translateY(-3px)}
