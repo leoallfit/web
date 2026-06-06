@@ -640,11 +640,6 @@ input,textarea,select,[contenteditable]{-webkit-user-select:text;user-select:tex
     <div class="marquee-outer" id="marquee-outer">
       <div class="testimonials-grid" id="testi-grid"></div>
     </div>
-    <div class="marquee-nav">
-      <button class="carousel-btn" id="carousel-prev" aria-label="Más lento / izquierda">&#8592;</button>
-
-      <button class="carousel-btn" id="carousel-next" aria-label="Más rápido / derecha">&#8594;</button>
-    </div>
   </div>
 </section>
 
@@ -980,16 +975,6 @@ function _scheduleResume(){
   clearTimeout(_asTimer);
   _asTimer=setTimeout(()=>{ _asPaused=false; }, RESUME_DELAY);
 }
-
-// Flechas
-function carouselScroll(dir){
-  _pause();
-  const card=mOuter.querySelector('.testimonial-card');
-  mOuter.scrollBy({left:(card?card.offsetWidth+20:360)*dir,behavior:'smooth'});
-  _scheduleResume();
-}
-document.getElementById('carousel-prev').addEventListener('click',()=>carouselScroll(-1));
-document.getElementById('carousel-next').addEventListener('click',()=>carouselScroll(1));
 
 // Drag mouse
 (()=>{
