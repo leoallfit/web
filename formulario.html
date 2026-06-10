@@ -242,15 +242,6 @@ document.addEventListener('keydown', e => {
   if(ctrl && e.shiftKey && ['i','j','c','k'].includes(e.key.toLowerCase())) { e.preventDefault(); return; }
   if(e.key === 'F12') e.preventDefault();
 });
-(function detectDevTools(){
-  const threshold = 160;
-  setInterval(function(){
-    if(window.outerWidth - window.innerWidth > threshold ||
-       window.outerHeight - window.innerHeight > threshold){
-      document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;font-size:18px;color:#F1F5F9;background:#0F172A">🔒 Acceso no permitido</div>';
-    }
-  }, 1000);
-})();
 
 const _formLoadTime = Date.now();
 
